@@ -1,0 +1,212 @@
+{
+  "nota": "Respaldo de la configuración del tablero #4 (alejo150224) del 2026-11-10 ANTES de cualquier cambio. Solo lectura. Sin secretos.",
+  "proyecto": {
+    "closed": false,
+    "id": "PVT_kwHOCYjq7M4BqLhU",
+    "public": false,
+    "shortDescription": "",
+    "title": "Pana Autos - Gestión Ágil",
+    "url": "https://github.com/users/alejo150224/projects/4"
+  },
+  "campos": [
+    {
+      "name": "Title",
+      "type": "ProjectV2Field",
+      "options": []
+    },
+    {
+      "name": "Assignees",
+      "type": "ProjectV2Field",
+      "options": []
+    },
+    {
+      "name": "Status",
+      "type": "ProjectV2SingleSelectField",
+      "options": [
+        "Backlog",
+        "Ready",
+        "In progress",
+        "In review",
+        "Done"
+      ]
+    },
+    {
+      "name": "Labels",
+      "type": "ProjectV2Field",
+      "options": []
+    },
+    {
+      "name": "Linked pull requests",
+      "type": "ProjectV2Field",
+      "options": []
+    },
+    {
+      "name": "Milestone",
+      "type": "ProjectV2Field",
+      "options": []
+    },
+    {
+      "name": "Repository",
+      "type": "ProjectV2Field",
+      "options": []
+    },
+    {
+      "name": "Reviewers",
+      "type": "ProjectV2Field",
+      "options": []
+    },
+    {
+      "name": "Parent issue",
+      "type": "ProjectV2Field",
+      "options": []
+    },
+    {
+      "name": "Sub-issues progress",
+      "type": "ProjectV2Field",
+      "options": []
+    },
+    {
+      "name": "Created",
+      "type": "ProjectV2Field",
+      "options": []
+    },
+    {
+      "name": "Updated",
+      "type": "ProjectV2Field",
+      "options": []
+    },
+    {
+      "name": "Closed",
+      "type": "ProjectV2Field",
+      "options": []
+    },
+    {
+      "name": "Priority",
+      "type": "ProjectV2SingleSelectField",
+      "options": [
+        "P0",
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "name": "Size",
+      "type": "ProjectV2SingleSelectField",
+      "options": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "name": "Story Points",
+      "type": "ProjectV2Field",
+      "options": []
+    },
+    {
+      "name": "Sprints",
+      "type": "ProjectV2IterationField",
+      "options": []
+    }
+  ],
+  "iteraciones": [
+    {
+      "id": "PVTIF_lAHOCYjq7M4BqLhUzhoj0HM",
+      "name": "Sprints",
+      "configuration": {
+        "duration": 14,
+        "startDay": 1,
+        "iterations": [
+          {
+            "id": "243c6538",
+            "title": "Sprints 1",
+            "startDate": "2026-11-04",
+            "duration": 14
+          },
+          {
+            "id": "76a1d206",
+            "title": "Sprints 2",
+            "startDate": "2026-11-18",
+            "duration": 14
+          },
+          {
+            "id": "a74a43d0",
+            "title": "Sprints 3",
+            "startDate": "2026-12-02",
+            "duration": 14
+          },
+          {
+            "id": "fe8c9b62",
+            "title": "Sprints 4",
+            "startDate": "2026-12-16",
+            "duration": 14
+          }
+        ]
+      }
+    }
+  ],
+  "items": [
+    {
+      "issue": 1,
+      "status": "Backlog",
+      "storyPoints": null,
+      "iteracion": null
+    },
+    {
+      "issue": 2,
+      "status": "Backlog",
+      "storyPoints": null,
+      "iteracion": null
+    },
+    {
+      "issue": 3,
+      "status": "Backlog",
+      "storyPoints": null,
+      "iteracion": null
+    },
+    {
+      "issue": 4,
+      "status": "Backlog",
+      "storyPoints": null,
+      "iteracion": null
+    },
+    {
+      "issue": 5,
+      "status": "Backlog",
+      "storyPoints": null,
+      "iteracion": null
+    },
+    {
+      "issue": 6,
+      "status": "Backlog",
+      "storyPoints": null,
+      "iteracion": null
+    },
+    {
+      "issue": 7,
+      "status": "Backlog",
+      "storyPoints": null,
+      "iteracion": null
+    },
+    {
+      "issue": 8,
+      "status": "Backlog",
+      "storyPoints": null,
+      "iteracion": null
+    },
+    {
+      "issue": 9,
+      "status": "Backlog",
+      "storyPoints": null,
+      "iteracion": null
+    },
+    {
+      "issue": 10,
+      "status": "Backlog",
+      "storyPoints": null,
+      "iteracion": null
+    }
+  ]
+}
