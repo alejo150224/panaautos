@@ -27,6 +27,10 @@ const PERMISOS = Object.freeze({
   // HU05 (Issue #5): "Como empleado/vendedor". El Issue exige "vendedor" como dato de la venta,
   // por lo que solo el rol Vendedor registra ventas (el vendedor es el usuario con sesión).
   'ventas:registrar': [ROLES.VENDEDOR],
+
+  // HU07 (Issue #7): "El vendedor autorizado puede consultar". El Dueño y el Administrador
+  // consultan reportes e historial, no gestionan solicitudes (DOCS/01 §2).
+  'solicitudes:consultar': [ROLES.VENDEDOR],
 });
 
 /**
