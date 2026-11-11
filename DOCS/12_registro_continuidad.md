@@ -54,15 +54,16 @@ Código en `src/` (50 archivos JS + HTML/CSS), 14 suites en `tests/`, `.github/w
 
 ## Bloqueos
 
-- Token `gh` sin scope `project` → sin acceso a GitHub Projects (requiere `gh auth refresh -s project`, acción del usuario).
-- La plantilla "Iterative development" solo se selecciona en la interfaz web.
+- Scope `project` autorizado por el usuario el 2026-11-10; el tablero #4 se leyó (`DOCS/evidencias/tablero_2026-11-10.md`) sin modificarlo.
+- Insights/Burn-up solo se configuran en la interfaz web (la API no los expone).
+- Modificar el tablero (Story Points, iteraciones, quitar «Sprints 4») requiere aprobación; antes se respalda su configuración.
 - La integración en `main` y el cambio de planificación requieren aprobación expresa.
 
 ## Próxima acción
 
 1. Revisar los PR en borrador (revisión humana real) y decidir el orden de integración; la integración en `main` requiere aprobación expresa.
 2. Decidir A/B de `DOCS/07`.
-3. Configurar el tablero y tomar capturas auténticas.
+3. Configurar el tablero existente (tras decidir A/B) y tomar capturas auténticas.
 
 ## Cómo retomar
 
