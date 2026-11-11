@@ -1,5 +1,7 @@
 # Ruta de demostración y datos ficticios (material de apoyo)
 
+> **Alcance de este documento:** describe la rama `feature/issue-10-consultar-historial`, que reúne las diez historias. En `main` hoy solo están HU01, HU05 y el soporte técnico; el resto llega al integrar los PR #14–#21 (ver `DOCS/12`). Los archivos que mencione y no existan en `main` están en esas ramas.
+
 ## 1. Instalar, ejecutar y probar
 
 Requisito: Node.js 22 o superior. **No hay dependencias que instalar** (`npm install` no es necesario).

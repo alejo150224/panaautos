@@ -1,5 +1,7 @@
 # Métodos que debemos defender y preguntas de estudio (material de apoyo)
 
+> **Alcance de este documento:** describe la rama `feature/issue-10-consultar-historial`, que reúne las diez historias. En `main` hoy solo están HU01, HU05 y el soporte técnico; el resto llega al integrar los PR #14–#21 (ver `DOCS/12`). Los archivos que mencione y no existan en `main` están en esas ramas.
+
 > Para sustentar hay que **entender** el código, no recitarlo. Cada punto indica archivo y qué decir. Las respuestas describen lo que el código hace hoy; las limitaciones se dicen tal cual.
 
 ## 1. Métodos clave
