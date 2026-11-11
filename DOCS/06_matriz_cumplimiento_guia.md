@@ -1,6 +1,6 @@
 # Matriz de cumplimiento de la guía y trazabilidad (material de apoyo)
 
-> Corte: 2026-11-11 · Guía: *GUÍA PRÁCTICA DE LABORATORIO: GESTIÓN ÁGIL Y DESARROLLO MANTENIBLE* (12 páginas).
+> Corte: 2026-11-12 · Guía: *GUÍA PRÁCTICA DE LABORATORIO: GESTIÓN ÁGIL Y DESARROLLO MANTENIBLE* (12 páginas).
 > **Criterio de estado:** *Comprobado* = se verificó con una orden o prueba ejecutada. *Implementado* = existe pero su verificación no es automática. *Parcial*. *Pendiente* = no hecho o no verificable aún. Nada planificado se marca como Comprobado.
 > Los ejemplos de boletería de la guía (fila virtual, QR, zonas, mapa) **no** son nuestras funcionalidades y no se implementaron.
 
@@ -30,8 +30,8 @@
 | 20 | Mover tarjeta a In review; Merge; borrar rama (opcional) | 10 | Las 10 tarjetas pasaron por *In review* y el *Merge pull request* se hizo con merge commit. Las ramas **no** se borraron (paso opcional) | — | — | **Comprobado** | Tablero y `git log main` |
 | 21 | Al integrar, GitHub cierra el Issue y mueve a Done | 9 | Al integrar #12 y #13 se cerraron los Issues #1 y #5 y sus tarjetas pasaron a **Done sin intervención** | — | — | **Comprobado** | Estado de los Issues #1 y #5 y del tablero |
 | 22 | Insights → Burn-up por suma de Story Points agrupado por Iteration | 10–11 | Gráfico «Burn up - Story Points por Sprint» guardado en Insights: 10 · 11 · 12 SP (captura `01`) | La API no expone Insights; se configuró en la web | — | **Comprobado** | Insights del tablero |
-| 23 | Velocidad real y % de cumplimiento | 11 | Sprint 1 (corte 2026-11-11): Vreal = **10 SP** (HU01 + HU05 en Done); planeada 10 → **100 %**. Los 23 SP de los Sprints 2 y 3 se integraron por adelantado | Provisional (cierre 2026-11-17); Done con autorrevisión asistida; el adelanto no mide capacidad humana | Recalcular al cierre | **Parcial** | `DOCS/05` §1 |
-| 24 | Informe `DOCS/05_informe_gestion_y_productividad.md` con 5 apartados | 11–12 | Los 5 apartados exactos de la guía, con la captura real del Burn-up | Sigue **provisional** hasta el cierre del Sprint 1 (2026-11-17) | Actualizar al cierre | **Parcial** | Abrir el archivo |
+| 23 | Velocidad real y % de cumplimiento | 11 | Sprint 1 (corte de entrega 2026-11-12): Vreal = **10 SP** (HU01 + HU05 en Done); planeada 10 → **100 %**. Los 23 SP de los Sprints 2 y 3 se integraron por adelantado | Denominador pendiente de validación del equipo; Done con autorrevisión asistida; el adelanto no mide capacidad humana | — | **Comprobado** (al corte) | `DOCS/05` §1 |
+| 24 | Informe `DOCS/05_informe_gestion_y_productividad.md` con 5 apartados | 11–12 | Los 5 apartados exactos de la guía, con la captura real del Burn-up, como versión de entrega (corte 2026-11-12) | Sin revisión de pares ni validación del equipo (declarado en el informe) | — | **Comprobado** | Abrir el archivo |
 | 25 | Uso opcional de IA en consola (`gh copilot`) | 3–4 | Se usó Claude Code; reconocido en `README` y `DOCS/05` | — | — | **No aplica** (opcional) | — |
 | 26 | Integración continua (título de la Fase 4; la guía no detalla pasos) | 9 | El workflow ejecutó `npm test` en los 9 pushes a `main` (uno por merge) y en los PR de documentación, todos en verde | — | — | **Comprobado** | `gh run list -R alejo150224/panaautos` |
 | 27 | Evidencias de pantalla (tablero, PR, Issues, CI, aplicación) | 10–11 | 14 capturas auténticas en `DOCS/evidencias/capturas/` ([índice](evidencias/capturas/README.md)) | Son del 2026-11-11; el estado de GitHub puede cambiar después | — | **Comprobado** | Abrir la carpeta |

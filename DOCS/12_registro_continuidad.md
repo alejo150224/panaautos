@@ -1,6 +1,6 @@
 # Registro de continuidad (material de apoyo, sin secretos)
 
-> Corte: 2026-11-11. Las diez historias están integradas en `main`; quedan el cierre del Sprint 1 (2026-11-17) y la sustentación.
+> Corte: 2026-11-12 (entrega y sustentación). Las diez historias están integradas en `main`; el informe `DOCS/05` es la versión de entrega.
 
 ## Estado de `main`
 - `main` = `2b66154`; `npm test` local: **346/346**; el código es idéntico al de `feature/issue-10-consultar-historial`.
@@ -29,7 +29,7 @@ Todas las integraciones fueron con **autorrevisión asistida, sin revisión de p
 ## Bloqueos y pendientes
 - **Burn-up y capturas:** hechos el 2026-11-11; las capturas están en `DOCS/evidencias/capturas/`.
 - **Revisión de pares humana:** el repositorio tiene un único colaborador; habría que invitar a los compañeros.
-- **Cierre del Sprint 1 (2026-11-17):** recalcular la velocidad, quitar «provisional» de `DOCS/05` y pegar el Burn-up.
+- **Sprint 1 programado hasta el 2026-11-17:** el informe de entrega usa el corte del 2026-11-12; si el equipo quiere, puede actualizarlo con trabajo posterior.
 - **Validación del equipo:** plan de tres sprints (alternativa A), roles y Planning Poker real (`DOCS/03`).
 - **Issues #1–#10:** cerrados, con las casillas de criterios marcadas y un comentario de evidencia en cada uno (2026-11-11).
 - ~~Cerrar el PR #22~~: hecho (cerrado sin integrar el 2026-11-11).
