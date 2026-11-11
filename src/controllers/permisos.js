@@ -3,15 +3,26 @@
 const { ROLES } = require('../models/enums');
 const { ErrorNoAutenticado, ErrorPermiso } = require('./errores');
 
+/** Roles que son personal interno de PANA AUTOS. */
+const PERSONAL_INTERNO = Object.freeze([
+  ROLES.VENDEDOR,
+  ROLES.ENCARGADO_INVENTARIO,
+  ROLES.DUENO,
+  ROLES.ADMINISTRADOR,
+]);
+
 /**
  * Regla de negocio de acceso por roles (trabajo técnico habilitante).
  * Cada permiso lista los roles autorizados. Las vistas nunca deciden quién puede qué: solo
  * preguntan al controlador y muestran el resultado.
  *
  * Decisiones propuestas (pendientes de validación del equipo) en DOCS/11.
+ * Los permisos de cada historia se declaran junto con su incremento.
  */
 const PERMISOS = Object.freeze({
-  // Los permisos de cada historia se declaran junto con su incremento.
+  // HU01 (Issue #1): "El empleado/vendedor autorizado puede consultar un listado". RF-09 habla de
+  // "empleados": se autoriza a todo el personal interno; el cliente/anónimo queda excluido.
+  'inventario:consultar': PERSONAL_INTERNO,
 });
 
 /**
@@ -39,13 +50,5 @@ function permisosDe(actor, tabla = PERMISOS) {
   if (!actor) return [];
   return Object.keys(tabla).filter((permiso) => tabla[permiso].includes(actor.rol));
 }
-
-/** Roles que son personal interno de PANA AUTOS. */
-const PERSONAL_INTERNO = Object.freeze([
-  ROLES.VENDEDOR,
-  ROLES.ENCARGADO_INVENTARIO,
-  ROLES.DUENO,
-  ROLES.ADMINISTRADOR,
-]);
 
 module.exports = { PERMISOS, PERSONAL_INTERNO, exigirPermiso, permisosDe };
