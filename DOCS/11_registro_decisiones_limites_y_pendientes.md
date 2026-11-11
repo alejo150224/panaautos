@@ -35,6 +35,7 @@ Clasificación: **[Guía]** requisito expreso de la guía · **[Issue]** regla d
 - **[Límite]** No hay medición de cobertura ni linter.
 - **[Límite]** Las solicitudes públicas no tienen protección antispam ni deduplicación: se permiten repetidas.
 - **[Límite]** Los habilitantes (roles, datos base, catálogo, almacenamiento) no tenían Story Points; su esfuerzo real no está estimado.
+- **[Límite]** El desarrollo de las 10 historias no usó Windows PowerShell ni VS Code como pide la guía (se hizo desde un Mac con un asistente de código); el flujo de la guía se ejecutó literalmente solo en la tarea TT01, con VS Code en macOS (Cmd + S en lugar de Ctrl + S, terminal zsh en lugar de PowerShell).
 
 ## 3. Pendientes
 
