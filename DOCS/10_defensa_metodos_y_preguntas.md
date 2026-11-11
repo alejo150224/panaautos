@@ -1,7 +1,5 @@
 # Métodos que debemos defender y preguntas de estudio (material de apoyo)
 
-> **Alcance de este documento:** describe la rama `feature/issue-10-consultar-historial`, que reúne las diez historias. En `main` hoy solo están HU01, HU05 y el soporte técnico; el resto llega al integrar los PR #14–#21 (ver `DOCS/12`). Los archivos que mencione y no existan en `main` están en esas ramas.
-
 > Para sustentar hay que **entender** el código, no recitarlo. Cada punto indica archivo y qué decir. Las respuestas describen lo que el código hace hoy; las limitaciones se dicen tal cual.
 
 ## 1. Métodos clave
@@ -52,9 +50,9 @@
 
 **¿Cómo se trata la hora?** Se guarda en UTC y las fechas de negocio se interpretan en Colombia (UTC-5). Hay una prueba con una venta a las 21:00 locales (02:00 UTC del día siguiente).
 
-**¿Cuántas pruebas hay y qué cubren?** 346 en la rama final: criterios de aceptación, casos negativos, permisos, validaciones, vacíos, persistencia, fallos, concurrencia, historial, arquitectura y servidor. **No miden cobertura de código** y son locales (la CI aún no se ejecutó en GitHub).
+**¿Cuántas pruebas hay y qué cubren?** 346 en `main`: criterios de aceptación, casos negativos, permisos, validaciones, vacíos, persistencia, fallos, concurrencia, historial, arquitectura y servidor. **No miden cobertura de código** y son locales (la CI aún no se ejecutó en GitHub).
 
-**¿Por qué "Done" es 0 SP si hay código y pruebas?** Porque la definición de terminado del plan exige revisión e integración, y no hay PR revisados ni integrados. Contar código sin integrar como terminado falsearía la velocidad.
+**¿Por qué las historias figuran en Done si no hubo revisión de pares humana?** Porque en la guía una historia llega a Done cuando su PR se integra en `main`: el Issue se cierra y la tarjeta pasa a Done. Aquí la «revisión» fue autorrevisión asistida por IA, no revisión de pares humana, y así se declara en el informe. Si el equipo exige revisión de pares en la definición de terminado de `DOCS/04`, hay que hacerla de forma retroactiva sobre los PR ya integrados. Tampoco conviene presentar los 33 SP integrados en un día como velocidad del equipo: el código se generó con IA.
 
 **¿Cuál es la diferencia entre el plan de 4 sprints y la guía de 3?** `DOCS/07`: 33 SP en 3 sprints son 11 SP promedio; el plan asumía 10. Hay dos alternativas y la decisión es del equipo.
 

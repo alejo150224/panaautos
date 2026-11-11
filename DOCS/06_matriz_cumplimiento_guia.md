@@ -1,6 +1,6 @@
 # Matriz de cumplimiento de la guía y trazabilidad (material de apoyo)
 
-> Corte: 2026-11-10 · Guía: *GUÍA PRÁCTICA DE LABORATORIO: GESTIÓN ÁGIL Y DESARROLLO MANTENIBLE* (12 páginas).
+> Corte: 2026-11-11 · Guía: *GUÍA PRÁCTICA DE LABORATORIO: GESTIÓN ÁGIL Y DESARROLLO MANTENIBLE* (12 páginas).
 > **Criterio de estado:** *Comprobado* = se verificó con una orden o prueba ejecutada. *Implementado* = existe pero su verificación no es automática. *Parcial*. *Pendiente* = no hecho o no verificable aún. Nada planificado se marca como Comprobado.
 > Los ejemplos de boletería de la guía (fila virtual, QR, zonas, mapa) **no** son nuestras funcionalidades y no se implementaron.
 
@@ -18,7 +18,7 @@
 | 8 | Verificar *Current iteration* y su suma de SP | 3 | La iteración vigente hoy es Sprint 1 (2026-11-04 → 11-17) y suma **10 SP** (#1 y #5) | La guía lo verifica con la pestaña del tablero; aquí se verificó por la API | Confirmar visualmente en la web | **Comprobado** (API) | Pestaña Current iteration |
 | 9 | Clonar el repositorio y trabajar en carpeta propia | 4 | Clon en `Claude-Workspace/panaautos-ingsoft`, remoto `alejo150224/panaautos` | — | — | **Comprobado** | `git remote -v` |
 | 10 | Configurar identidad Git (incidencia #1) | 4 | `user.name/email` configurados **solo en el repo local**, con autorización del usuario | Identidad global sin configurar (intencional) | — | **Comprobado** | `git config --local --list \| grep user` |
-| 11 | Prohibido modificar `main`; una rama por incremento que referencie el Issue | 3–5 | 10 ramas `feature/issue-N-…` + 1 `chore/…` + 1 `docs/…`; `main` sin commits nuevos | — | — | **Comprobado** | `gh api repos/alejo150224/panaautos/branches`; `main` sigue en a3a8add |
+| 11 | Prohibido modificar `main`; una rama por incremento que referencie el Issue | 3–5 | 10 ramas `feature/issue-N-…` + `chore/…` + `docs/…`; todo entró a `main` por PR con *merge commit*, sin commits directos | — | — | **Comprobado** | `git log --first-parent main` |
 | 12 | Estructura `src/controllers`, `models`, `dao`, `views` y `tests` | 5 | Carpetas creadas; prueba de arquitectura | — | `tests/arquitectura.test.js` | **Comprobado** | `npm test` |
 | 13 | Modelo, DAO y Facade/Controller con responsabilidad única | 5–8 | Modelos solo describen datos; DAO solo acceso; controladores son fachadas | — | `src/…` ver `DOCS/08` | **Comprobado** | `tests/arquitectura.test.js` (dependencias entre capas) |
 | 14 | Contratos JSDoc y modularización CommonJS (`module.exports`) | 5–8, 12 | JSDoc en métodos públicos; `'use strict'` + `require`/`module.exports` | No hay linter que mida cobertura de JSDoc | Revisión manual | **Implementado** | Leer `src/controllers/*.js` |
@@ -26,18 +26,18 @@
 | 16 | Guardar los archivos: sin archivos vacíos (incidencia #2) | 9 | Ningún archivo de `src`, `tests`, `scripts` ni `.github` tiene 0 bytes | No hay prueba automática de esto | — | **Comprobado** (verificación puntual) | `find src tests scripts .github -type f -size 0` |
 | 17 | Commit `feat: [N SP] … (#N)` | 9 | Los 10 commits de historia siguen el formato | — | — | **Comprobado** | `git log --oneline` |
 | 18 | `git push origin <rama>` antes de abrir el PR (incidencia #3) | 9–10 | 12 ramas publicadas el 2026-11-10 tras revisar remoto, diff y secretos | — | — | **Comprobado** | `git ls-remote --heads origin` |
-| 19 | PR `base: main ← compare: rama`, título y `Closes #N` | 10 | #11, #12 y #13 se integraron con base `main` y `Closes #N` (Issues #1 y #5 cerrados); #14–#22 siguen en borrador y apilados | Los pendientes aún no apuntan a `main` | Re-apuntar a `main` al integrarlos, en orden | **Parcial** | `gh pr list -R alejo150224/panaautos --state all` |
-| 20 | Mover tarjeta a In review; Merge; borrar rama (opcional) | 10 | #1 y #5: In review → *Merge pull request* (merge commit) hecho el 2026-11-11; #2–#4 y #6–#10 en In review. Las ramas **no** se borraron (paso opcional) | Falta integrar las otras ocho | Integrarlas en su sprint, con aprobación | **Parcial** | Tablero y `git log main` |
+| 19 | PR `base: main ← compare: rama`, título y `Closes #N` | 10 | Los 11 PR de código se integraron con base `main`, título «Implementación HUxx - …» y `Closes #N` (los 10 Issues quedaron cerrados) | — | — | **Comprobado** | `gh pr list -R alejo150224/panaautos --state merged` |
+| 20 | Mover tarjeta a In review; Merge; borrar rama (opcional) | 10 | Las 10 tarjetas pasaron por *In review* y el *Merge pull request* se hizo con merge commit. Las ramas **no** se borraron (paso opcional) | — | — | **Comprobado** | Tablero y `git log main` |
 | 21 | Al integrar, GitHub cierra el Issue y mueve a Done | 9 | Al integrar #12 y #13 se cerraron los Issues #1 y #5 y sus tarjetas pasaron a **Done sin intervención** | — | — | **Comprobado** | Estado de los Issues #1 y #5 y del tablero |
 | 22 | Insights → Burn-up por suma de Story Points agrupado por Iteration | 10–11 | — | La API no expone Insights; sin SP ni iteraciones asignados no habría datos | Configurar en la interfaz web tras asignar | **Pendiente** | Insights del tablero |
-| 23 | Velocidad real y % de cumplimiento | 11 | Sprint 1 (corte 2026-11-11): Vreal = 10 SP (HU01 + HU05 en Done); planeada 10 → **100 %** | Provisional (cierre 2026-11-17); Done con autorrevisión asistida, sin revisión de pares | Recalcular al cierre | **Parcial** | `DOCS/05` §1 |
+| 23 | Velocidad real y % de cumplimiento | 11 | Sprint 1 (corte 2026-11-11): Vreal = **10 SP** (HU01 + HU05 en Done); planeada 10 → **100 %**. Los 23 SP de los Sprints 2 y 3 se integraron por adelantado | Provisional (cierre 2026-11-17); Done con autorrevisión asistida; el adelanto no mide capacidad humana | Recalcular al cierre | **Parcial** | `DOCS/05` §1 |
 | 24 | Informe `DOCS/05_informe_gestion_y_productividad.md` con 5 apartados | 11–12 | Creado como **provisional** | Falta captura real del Burn-up y cierre | Actualizar al cierre | **Parcial** | Abrir el archivo |
 | 25 | Uso opcional de IA en consola (`gh copilot`) | 3–4 | Se usó Claude Code; reconocido en `README` y `DOCS/05` | — | — | **No aplica** (opcional) | — |
-| 26 | Integración continua (título de la Fase 4; la guía no detalla pasos) | 9 | El workflow ejecutó `npm test` en 3 pushes a `main` (2026-11-11), todos en verde | Aún no visto sobre un PR abierto | — | **Comprobado** (en `main`) | `gh run list -R alejo150224/panaautos` |
+| 26 | Integración continua (título de la Fase 4; la guía no detalla pasos) | 9 | El workflow ejecutó `npm test` en los 9 pushes a `main` (uno por merge) y en los PR de documentación, todos en verde | — | — | **Comprobado** | `gh run list -R alejo150224/panaautos` |
 
 ## B. Trazabilidad HU → criterio → código → prueba → rama → evidencia
 
-Todas las historias están **implementadas y probadas localmente**, con rama y commit, pero **solo HU01 y HU05 están integradas en `main` y cerradas (Done); las otras ocho siguen en PR en borrador, y ninguna tuvo revisión de pares humana** (no cumple la *definición de terminado* de `DOCS/04` §1.2). PR: HU01 #12 (**Merged**) · HU05 #13 (**Merged**) · HU06 #14 · HU07 #15 · HU08 #16 · HU02 #17 · HU03 #18 · HU04 #19 · HU09 #20 · HU10 #21 · habilitante #11 (**Merged**) · documentación #22. Evidencia común: salida de `npm test` (registro en `DOCS/evidencias/registro_pruebas.md`) y recorrido manual de la interfaz en navegador el 2026-11-10.
+Las diez historias están **implementadas, probadas (346 pruebas locales) e integradas en `main`, con su Issue cerrado y su tarjeta en Done**. **Ninguna tuvo revisión de pares humana** (solo autorrevisión asistida); HU06–HU10 se integraron por adelantado respecto de su sprint. PR (todos *Merged* con merge commit): HU01 #12 · HU05 #13 · HU06 #14 · HU07 #15 · HU08 #16 · HU02 #17 · HU03 #18 · HU04 #19 · HU09 #20 · HU10 #21 · habilitante #11 · documentación #23 (el #22 sigue abierto y es redundante). Evidencia común: salida de `npm test` (`DOCS/evidencias/registro_pruebas.md`), CI en verde sobre `main` y recorrido manual de la interfaz en navegador el 2026-11-10.
 
 | HU · Issue · rama (commit) | Criterio de aceptación | Código | Prueba (bloque `describe` / archivo) |
 |---|---|---|---|
