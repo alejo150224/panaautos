@@ -29,5 +29,11 @@ module.exports = function rutasSolicitudes({ catalogo, solicitudes }) {
       ruta: '/api/solicitudes/:id',
       manejador: ({ actor, params }) => ({ estado: 200, cuerpo: solicitudes.obtenerSolicitud(actor, params.id) }),
     },
+    // HU08
+    {
+      metodo: 'PATCH',
+      ruta: '/api/solicitudes/:id/estado',
+      manejador: ({ actor, params, cuerpo }) => ({ estado: 200, cuerpo: solicitudes.actualizarEstado(actor, params.id, cuerpo.estado) }),
+    },
   ];
 };

@@ -1,4 +1,7 @@
-import { api, el, etiquetaEstado, formatearFechaHora, formatearPrecio, mensajeDeError } from '../nucleo.js';
+import { api, el, etiquetaEstado, formatearFechaHora, formatearPrecio, mensajeDeError, mostrarAviso } from '../nucleo.js';
+
+// Estados que ofrece el selector (el servidor valida de nuevo: Issue #8).
+const ESTADOS = ['Nueva', 'En contacto', 'En negociación', 'Atendida', 'Cerrada'];
 
 /** Sección HU07: consulta de solicitudes de clientes (solo vendedores). */
 export const solicitudes = {
@@ -6,7 +9,7 @@ export const solicitudes = {
   titulo: 'Solicitudes',
   permiso: 'solicitudes:consultar',
 
-  async montar(contenedor) {
+  async montar(contenedor, { recargar }) {
     const { solicitudes: lista, mensaje } = await api('GET', '/api/solicitudes');
     contenedor.append(
       el('h2', {}, 'Solicitudes de clientes'),
@@ -37,7 +40,7 @@ export const solicitudes = {
                 el('td', {}, s.vehiculo.descripcion),
                 el('td', {}, formatearFechaHora(s.fecha)),
                 el('td', {}, etiquetaEstado(s.estado)),
-                el('td', {}, el('button', { type: 'button', class: 'accion secundario', onclick: () => mostrarDetalle(zonaDetalle, s.id) }, 'Ver detalle')),
+                el('td', {}, el('button', { type: 'button', class: 'accion secundario', onclick: () => mostrarDetalle(zonaDetalle, s.id, recargar) }, 'Ver detalle')),
               ),
             ),
           ),
@@ -48,10 +51,30 @@ export const solicitudes = {
   },
 };
 
-async function mostrarDetalle(zona, id) {
+async function mostrarDetalle(zona, id, recargar) {
   try {
     const s = await api('GET', `/api/solicitudes/${id}`);
     const v = s.vehiculo;
+    const selector = el('select', { id: 'estado-solicitud', 'aria-label': 'Estado de atención' }, ESTADOS.map((e) => el('option', { value: e, selected: e === s.estado }, e)));
+    const guardar = el(
+      'button',
+      {
+        type: 'button',
+        class: 'accion',
+        onclick: async () => {
+          guardar.disabled = true;
+          try {
+            const r = await api('PATCH', `/api/solicitudes/${id}/estado`, { estado: selector.value });
+            mostrarAviso(r.cambio ? `Estado actualizado: ${r.estadoAnterior} → ${r.estado}` : 'El estado ya era ese; no hubo cambios', 'ok');
+            await recargar();
+          } catch (error) {
+            mostrarAviso(mensajeDeError(error), 'error');
+            guardar.disabled = false;
+          }
+        },
+      },
+      'Guardar estado',
+    );
     zona.replaceChildren(
       el(
         'section',
@@ -69,6 +92,9 @@ async function mostrarDetalle(zona, id) {
           el('dt', {}, 'Vehículo'),
           el('dd', {}, v ? `#${v.id} ${v.marca} ${v.modelo} ${v.anio} · ${formatearPrecio(v.precio)} · ${v.estado}` : 'No disponible'),
         ),
+        el('label', { for: 'estado-solicitud' }, 'Actualizar estado de atención'),
+        selector,
+        el('div', { class: 'fila-acciones' }, guardar),
       ),
     );
   } catch (error) {

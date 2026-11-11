@@ -121,6 +121,40 @@ class SolicitudController {
     };
   }
 
+  /**
+   * Contrato (HU08): cambia el estado de atención de una solicitud existente. Solo se modifica el
+   * campo `estado`: los datos de contacto del cliente y el vehículo asociado se conservan.
+   * Si el estado indicado es el que ya tiene, no hay cambio (`cambio: false`).
+   *
+   * @param {import('../models/Usuario')|null} actor debe tener rol Vendedor (clientes y otros roles no pueden).
+   * @param {number|string} id identificador de la solicitud.
+   * @param {string} estado uno de ESTADOS_SOLICITUD.
+   * @returns {{id: number, estado: string, estadoAnterior: string, cambio: boolean}}
+   * @throws {import('./errores').ErrorNoAutenticado|import('./errores').ErrorPermiso}
+   * @throws {import('./errores').ErrorValidacion} identificador o estado inválido (no se guarda nada).
+   * @throws {import('./errores').ErrorNoEncontrado} la solicitud no existe.
+   */
+  actualizarEstado(actor, id, estado) {
+    exigirPermiso(actor, 'solicitudes:gestionar');
+    const errores = new Errores();
+    const solicitudId = aIdentificador(id);
+    if (solicitudId === null) errores.agregar('id', 'Identificador de solicitud inválido');
+    if (!Object.values(ESTADOS_SOLICITUD).includes(estado)) {
+      errores.agregar('estado', `Seleccione un estado válido: ${Object.values(ESTADOS_SOLICITUD).join(', ')}`);
+    }
+    errores.lanzarSiHay();
+
+    return this.almacenamiento.transaccion(() => {
+      const solicitud = this.solicitudDAO.porId(solicitudId);
+      if (!solicitud) throw new ErrorNoEncontrado('La solicitud no existe');
+      const estadoAnterior = solicitud.estado;
+      if (estadoAnterior === estado) return { id: solicitud.id, estado, estadoAnterior, cambio: false };
+      solicitud.estado = estado;
+      this.solicitudDAO.actualizar(solicitud);
+      return { id: solicitud.id, estado, estadoAnterior, cambio: true };
+    });
+  }
+
   /** @returns {string} "Marca Modelo Año" del vehículo, o un texto de reserva si no existe. */
   _descripcionVehiculo(vehiculoId) {
     const v = this.vehiculoDAO.porId(vehiculoId);
