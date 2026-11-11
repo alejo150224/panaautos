@@ -35,6 +35,7 @@
 | 25 | Uso opcional de IA en consola (`gh copilot`) | 3–4 | Se usó Claude Code; reconocido en `README` y `DOCS/05` | — | — | **No aplica** (opcional) | — |
 | 26 | Integración continua (título de la Fase 4; la guía no detalla pasos) | 9 | El workflow ejecutó `npm test` en los 9 pushes a `main` (uno por merge) y en los PR de documentación, todos en verde | — | — | **Comprobado** | `gh run list -R alejo150224/panaautos` |
 | 27 | Evidencias de pantalla (tablero, PR, Issues, CI, aplicación) | 10–11 | 14 capturas auténticas en `DOCS/evidencias/capturas/` ([índice](evidencias/capturas/README.md)) | Son del 2026-11-11; el estado de GitHub puede cambiar después | — | **Comprobado** | Abrir la carpeta |
+| 28 | Herramientas de la guía (Windows PowerShell, VS Code, New-Item, Ctrl + S) | 3–9 | Las 10 historias se desarrollaron desde la terminal de un Mac con un asistente de código; la tarea TT01 (#27) se ejecutó con VS Code y su terminal integrada en macOS, siguiendo los pasos 5 a 10 | El desarrollo de las 10 historias **no** usó PowerShell ni VS Code | Este documento y el PR de TT01 | **Parcial** | Abrir el PR de TT01 (`Closes #27`) |
 
 ## B. Trazabilidad HU → criterio → código → prueba → rama → evidencia
 
