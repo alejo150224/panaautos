@@ -22,17 +22,17 @@
 | #19 | HU04 | 6eaeb47 |
 | #20 | HU09 | 2f6bb5e |
 | #21 | HU10 | 2b66154 |
-| #22 | Documentación (rama antigua) | **abierto, redundante con #23** |
+| #22 | Documentación (rama antigua) | **cerrado sin integrar** (redundante con #23) |
 
 Todas las integraciones fueron con **autorrevisión asistida, sin revisión de pares humana**. Las ramas `chore/…`, `feature/issue-*` y `docs/*` siguen publicadas (no se borraron). Identidad de los commits: la de `alejo150224`, autorizada por el usuario; la identidad global de Git no se tocó.
 
 ## Bloqueos y pendientes
-- **Burn-up y capturas:** Insights solo se configura en la web; no hay capturas en el repositorio.
+- **Burn-up y capturas:** hechos el 2026-11-11; las capturas están en `DOCS/evidencias/capturas/`.
 - **Revisión de pares humana:** el repositorio tiene un único colaborador; habría que invitar a los compañeros.
 - **Cierre del Sprint 1 (2026-11-17):** recalcular la velocidad, quitar «provisional» de `DOCS/05` y pegar el Burn-up.
 - **Validación del equipo:** plan de tres sprints (alternativa A), roles y Planning Poker real (`DOCS/03`).
-- **Issues #1–#10:** cerrados, pero las casillas de los criterios de aceptación siguen sin marcar (editar los Issues requiere permiso).
-- **Cerrar el PR #22.**
+- **Issues #1–#10:** cerrados, con las casillas de criterios marcadas y un comentario de evidencia en cada uno (2026-11-11).
+- ~~Cerrar el PR #22~~: hecho (cerrado sin integrar el 2026-11-11).
 
 ## Cómo retomar
 ```bash

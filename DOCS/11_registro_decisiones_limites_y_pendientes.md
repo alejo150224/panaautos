@@ -39,9 +39,9 @@ Clasificación: **[Guía]** requisito expreso de la guía · **[Issue]** regla d
 ## 3. Pendientes
 
 - **[Pendiente]** Aprobar la adaptación a tres sprints (`DOCS/07`).
-- **[Comprobado]** La automatización a Done funcionó con los 10 Issues (2026-11-11). **[Pendiente]** configurar el Burn-up (Insights solo en la interfaz web).
+- **[Comprobado]** La automatización a Done funcionó con los 10 Issues y el Burn-up quedó configurado en Insights (2026-11-11).
 - **[Pendiente]** Revisión por pares (humanos) de los PR ya integrados #11–#21: hasta ahora **solo hubo autorrevisión asistida**. Si encuentran defectos, abrir Issues nuevos.
 - **[Comprobado]** CI: 3 ejecuciones en verde sobre `main` (2026-11-11). **[Pendiente]** verlo también sobre un PR abierto.
-- **[Pendiente]** Capturas auténticas (tablero, PR, interfaz, Burn-up).
+- **[Comprobado]** Capturas auténticas (tablero, PR, Issues, CI, interfaz y Burn-up) incorporadas el 2026-11-11 en `DOCS/evidencias/capturas/`.
 - **[Pendiente]** Acordar roles reales (PO, Scrum Master, Developers) y la fecha de inicio del Sprint 1.
 - **[Pendiente]** Etiquetas MoSCoW: existen; el Issue #1 tiene un título con formato distinto ("HU01-Consultar…").

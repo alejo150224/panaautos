@@ -51,4 +51,4 @@ Para el caso vacío de HU01 y HU07 use `npm run start:vacio` (inventario) o una 
 
 ## 4. Capturas
 
-Las capturas de pantalla **auténticas** de esta versión están pendientes (ver `DOCS/12`). No se incluyen imágenes generadas para simular resultados.
+Las capturas **auténticas** de esta versión están en `DOCS/evidencias/capturas/` (ver su [índice](evidencias/capturas/README.md)); incluyen la aplicación en ejecución (`08` y `09`). No se incluyen imágenes generadas para simular resultados.
