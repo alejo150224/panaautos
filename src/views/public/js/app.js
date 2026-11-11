@@ -36,8 +36,9 @@ function pintarSesion() {
 }
 
 function pintarMenu() {
+  // replaceChildren recibe nodos sueltos: se expande el arreglo con "...".
   menu.replaceChildren(
-    seccionesVisibles().map((s) =>
+    ...seccionesVisibles().map((s) =>
       el(
         'button',
         { type: 'button', 'aria-current': s.id === estado.seccionId ? 'page' : false, onclick: () => abrirSeccion(s.id) },

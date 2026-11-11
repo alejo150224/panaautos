@@ -75,6 +75,20 @@ describe('Arquitectura en tres capas', () => {
     }
   });
 
+  test('el código de la interfaz no usa innerHTML ni pasa arreglos a replaceChildren (defecto real corregido)', () => {
+    const publico = path.join(RAIZ, 'views', 'public');
+    const recorrer = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+      const completa = path.join(dir, e.name);
+      if (e.isDirectory()) return recorrer(completa);
+      return e.name.endsWith('.js') ? [completa] : [];
+    });
+    for (const archivo of recorrer(publico)) {
+      const codigo = fs.readFileSync(archivo, 'utf8').replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, ''); // sin comentarios
+      assert.equal(/innerHTML|outerHTML|insertAdjacentHTML|document\.write/.test(codigo), false, `${archivo}: no se debe inyectar HTML`);
+      assert.equal(/replaceChildren\(\s*(\[|[\w.$]+\.map\()/.test(codigo), false, `${archivo}: replaceChildren no acepta un arreglo; use "..."`);
+    }
+  });
+
   test('la estructura de carpetas requerida por la guía existe', () => {
     for (const carpeta of ['models', 'dao', 'controllers', 'views']) {
       assert.ok(fs.statSync(path.join(RAIZ, carpeta)).isDirectory(), `falta src/${carpeta}`);
