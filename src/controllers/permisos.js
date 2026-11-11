@@ -40,6 +40,9 @@ const PERMISOS = Object.freeze({
   'propuestas:registrar': [ROLES.VENDEDOR, ROLES.ENCARGADO_INVENTARIO],
   // Consulta: el Dueño revisa todas; el empleado solo las que presentó (regla en el controlador).
   'propuestas:consultar': [ROLES.DUENO, ROLES.VENDEDOR, ROLES.ENCARGADO_INVENTARIO],
+
+  // HU03 y HU04 (Issues #3 y #4): "La aprobación solo puede ser realizada por el rol Dueño".
+  'propuestas:decidir': [ROLES.DUENO],
 });
 
 /**

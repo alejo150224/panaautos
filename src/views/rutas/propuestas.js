@@ -23,5 +23,11 @@ module.exports = function rutasPropuestas({ propuestas }) {
       ruta: '/api/propuestas/:id',
       manejador: ({ actor, params }) => ({ estado: 200, cuerpo: propuestas.obtenerPropuesta(actor, params.id) }),
     },
+    // HU03
+    {
+      metodo: 'POST',
+      ruta: '/api/propuestas/:id/aprobar',
+      manejador: ({ actor, params }) => ({ estado: 200, cuerpo: propuestas.aprobarPropuesta(actor, params.id) }),
+    },
   ];
 };
