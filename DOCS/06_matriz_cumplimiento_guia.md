@@ -18,15 +18,15 @@
 | 8 | Verificar *Current iteration* y su suma de SP | 3 | — | Sin tablero | — | **Pendiente** | Pestaña Current iteration |
 | 9 | Clonar el repositorio y trabajar en carpeta propia | 4 | Clon en `Claude-Workspace/panaautos-ingsoft`, remoto `alejo150224/panaautos` | — | — | **Comprobado** | `git remote -v` |
 | 10 | Configurar identidad Git (incidencia #1) | 4 | `user.name/email` configurados **solo en el repo local**, con autorización del usuario | Identidad global sin configurar (intencional) | — | **Comprobado** | `git config --local --list \| grep user` |
-| 11 | Prohibido modificar `main`; una rama por incremento que referencie el Issue | 3–5 | 10 ramas `feature/issue-N-…` + 1 `chore/…` + 1 `docs/…`; `main` sin commits nuevos | Ramas sin publicar | Publicar y abrir PR | **Comprobado** (local) | `git log main..HEAD`; `git branch` |
+| 11 | Prohibido modificar `main`; una rama por incremento que referencie el Issue | 3–5 | 10 ramas `feature/issue-N-…` + 1 `chore/…` + 1 `docs/…`; `main` sin commits nuevos | — | — | **Comprobado** | `gh api repos/alejo150224/panaautos/branches`; `main` sigue en a3a8add |
 | 12 | Estructura `src/controllers`, `models`, `dao`, `views` y `tests` | 5 | Carpetas creadas; prueba de arquitectura | — | `tests/arquitectura.test.js` | **Comprobado** | `npm test` |
 | 13 | Modelo, DAO y Facade/Controller con responsabilidad única | 5–8 | Modelos solo describen datos; DAO solo acceso; controladores son fachadas | — | `src/…` ver `DOCS/08` | **Comprobado** | `tests/arquitectura.test.js` (dependencias entre capas) |
 | 14 | Contratos JSDoc y modularización CommonJS (`module.exports`) | 5–8, 12 | JSDoc en métodos públicos; `'use strict'` + `require`/`module.exports` | No hay linter que mida cobertura de JSDoc | Revisión manual | **Implementado** | Leer `src/controllers/*.js` |
 | 15 | Persistencia simulada integrada con DAO | 6–7 | Adaptadores memoria y JSON local con la misma interfaz | — | `src/dao/almacenamiento/` | **Comprobado** | `tests/almacenamiento.test.js` |
 | 16 | Guardar los archivos: sin archivos vacíos (incidencia #2) | 9 | Ningún archivo de `src`, `tests`, `scripts` ni `.github` tiene 0 bytes | No hay prueba automática de esto | — | **Comprobado** (verificación puntual) | `find src tests scripts .github -type f -size 0` |
 | 17 | Commit `feat: [N SP] … (#N)` | 9 | Los 10 commits de historia siguen el formato | — | — | **Comprobado** | `git log --oneline` |
-| 18 | `git push origin <rama>` antes de abrir el PR (incidencia #3) | 9–10 | — | Ramas sin publicar | Publicar tras revisar remoto, diff y secretos | **Pendiente** | `git ls-remote --heads origin` |
-| 19 | PR `base: main ← compare: rama`, título y `Closes #N` | 10 | — | Sin PR. Las ramas están **apiladas**: la base de cada PR es la rama anterior | PR en borrador con orden de integración | **Pendiente** | `gh pr list` |
+| 18 | `git push origin <rama>` antes de abrir el PR (incidencia #3) | 9–10 | 12 ramas publicadas el 2026-11-10 tras revisar remoto, diff y secretos | — | — | **Comprobado** | `git ls-remote --heads origin` |
+| 19 | PR `base: main ← compare: rama`, título y `Closes #N` | 10 | 12 PR en **borrador** (#11–#22), apilados (base = rama anterior) | Falta revisión humana; `Closes #N` solo actúa al integrarse en `main` | Revisar e integrar con aprobación | **Parcial** | `gh pr list -R alejo150224/panaautos` |
 | 20 | Mover tarjeta a In review; Merge; borrar rama (opcional) | 10 | — | Requiere aprobación expresa para integrar en `main` | Pedir aprobación del lote de PR | **Pendiente** | Tablero y `git log main` |
 | 21 | Al integrar, GitHub cierra el Issue y mueve a Done | 9 | — | La automatización del tablero no se ha verificado | Verificar configuración efectiva tras la primera integración | **Pendiente** | Estado del Issue y del tablero |
 | 22 | Insights → Burn-up por suma de Story Points agrupado por Iteration | 10–11 | — | Sin tablero ni historial real | No se inventa ni se reconstruye el historial | **Pendiente** | Insights del tablero |
@@ -36,7 +36,7 @@
 
 ## B. Trazabilidad HU → criterio → código → prueba → rama → evidencia
 
-Todas las historias están **implementadas y probadas localmente**, con rama y commit, pero **ninguna está integrada, revisada por pares ni cerrada** (no cumple la *definición de terminado* de `DOCS/04` §1.2). Las columnas **PR** quedan *sin PR* hasta publicar (ver `DOCS/12`). Evidencia común: salida de `npm test` (registro en `DOCS/evidencias/registro_pruebas.md`) y recorrido manual de la interfaz en navegador el 2026-11-10.
+Todas las historias están **implementadas y probadas localmente**, con rama y commit, pero **ninguna está integrada, revisada por pares ni cerrada** (no cumple la *definición de terminado* de `DOCS/04` §1.2). PR en borrador (apilados): HU01 #12 · HU05 #13 · HU06 #14 · HU07 #15 · HU08 #16 · HU02 #17 · HU03 #18 · HU04 #19 · HU09 #20 · HU10 #21 · habilitante #11 · documentación #22. Evidencia común: salida de `npm test` (registro en `DOCS/evidencias/registro_pruebas.md`) y recorrido manual de la interfaz en navegador el 2026-11-10.
 
 | HU · Issue · rama (commit) | Criterio de aceptación | Código | Prueba (bloque `describe` / archivo) |
 |---|---|---|---|
