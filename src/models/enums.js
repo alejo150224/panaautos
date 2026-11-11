@@ -29,4 +29,11 @@ const ESTADOS_VEHICULO = Object.freeze({
   VENDIDO: 'Vendido',
 });
 
-module.exports = { ROLES, NOMBRES_ROL, ESTADOS_VEHICULO };
+/** Modalidades de compra de una venta (HU05). Texto idéntico al criterio 2 del Issue #5. */
+const MODALIDADES_VENTA = Object.freeze({
+  CONTADO: 'Contado',
+  CREDITO_EXTERNO: 'Crédito externo',
+  INTERCAMBIO: 'Intercambio de vehículo/bienes',
+});
+
+module.exports = { ROLES, NOMBRES_ROL, ESTADOS_VEHICULO, MODALIDADES_VENTA };
