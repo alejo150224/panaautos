@@ -175,7 +175,7 @@ Este README resume el alcance documentado de **HU01–HU10**. No incorpora las t
 
 ## 10. Estado de la implementación y cómo ejecutarla
 
-> **Estado real (corte 2026-11-10):** las diez historias HU01–HU10 tienen código y pruebas automáticas **en ramas de trabajo**, pero **ninguna está integrada en `main`, revisada por pares ni cerrada**; por la definición de terminado de este repositorio, la velocidad lograda es **0 SP**. Las pruebas son locales; al corte GitHub no registra ejecuciones de la CI (por verificar). Los PR en borrador son #11–#22. Ver [`DOCS/05`](DOCS/05_informe_gestion_y_productividad.md) (provisional) y [`DOCS/06`](DOCS/06_matriz_cumplimiento_guia.md).
+> **Estado real (corte 2026-11-11):** HU01 y HU05 (los 10 SP del Sprint 1) están **integradas en `main`** (PR #12 y #13) y cerradas; las otras ocho historias tienen código y pruebas en PR en borrador (#14–#22) y siguen en *In review*. La integración fue con **autorrevisión asistida, sin revisión de pares humana**. El CI de GitHub ejecutó `npm test` en verde sobre `main`. Ver [`DOCS/05`](DOCS/05_informe_gestion_y_productividad.md) (provisional) y [`DOCS/06`](DOCS/06_matriz_cumplimiento_guia.md).
 
 Prototipo en **Node.js 22+** (JavaScript, CommonJS, JSDoc), sin dependencias que instalar, con arquitectura en tres capas (`src/views`, `src/controllers`, `src/dao`) y entidades en `src/models`. Usa **solo datos ficticios** y escucha únicamente en `127.0.0.1`.
 

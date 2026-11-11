@@ -1,6 +1,6 @@
 # Registro de continuidad (material de apoyo, sin secretos)
 
-> Corte: 2026-11-10. Ramas publicadas y PR en borrador abiertos.
+> Corte: 2026-11-11. El lote del Sprint 1 (#11, #12, #13) está integrado en `main`; los demás PR siguen en borrador.
 
 ## Estado Git (pila de ramas; cada una parte de la anterior)
 
@@ -29,17 +29,17 @@ Código en `src/` (50 archivos JS + HTML/CSS), 14 suites en `tests/`, `.github/w
 
 ## Pruebas ejecutadas
 
-`npm test` local, 2026-11-10, Node v22.14.0: 346/346 en la punta y verde en cada rama (detalle en `DOCS/evidencias/registro_pruebas.md`). **CI de GitHub: sin ejecuciones registradas al corte (por verificar en la pestaña Actions).**
+`npm test` local, 2026-11-10 (ramas) y 2026-11-11 (`main`: 149/149), Node v22.14.0: 346/346 en la punta y verde en cada rama (detalle en `DOCS/evidencias/registro_pruebas.md`). **CI de GitHub: 3 ejecuciones en verde sobre `main`.**
 
 ## PR
 
-12 PR en **borrador**, apilados (base = rama anterior), abiertos el 2026-11-10 en `alejo150224/panaautos`:
+3 PR integrados (#11, #12, #13; merge commit) y 9 siguen en **borrador** (#14–#22), apilados (base = rama anterior). Abiertos el 2026-11-10 en `alejo150224/panaautos`:
 
 | PR | Rama | Base |
 |---|---|---|
-| #11 | `chore/soporte-arquitectura-tres-capas` | `main` |
-| #12 | `feature/issue-1-consultar-inventario` | #11 |
-| #13 | `feature/issue-5-registrar-venta` | #12 |
+| #11 | `chore/soporte-arquitectura-tres-capas` | `main` · **integrado** (7ff90a2) |
+| #12 | `feature/issue-1-consultar-inventario` | `main` (re-apuntado) · **integrado** (cbe9ba3) |
+| #13 | `feature/issue-5-registrar-venta` | `main` (re-apuntado) · **integrado** (6f5cb6a) |
 | #14 | `feature/issue-6-registrar-solicitud` | #13 |
 | #15 | `feature/issue-7-consultar-solicitudes` | #14 |
 | #16 | `feature/issue-8-actualizar-estado-solicitud` | #15 |
@@ -50,7 +50,7 @@ Código en `src/` (50 archivos JS + HTML/CSS), 14 suites en `tests/`, `.github/w
 | #21 | `feature/issue-10-consultar-historial` | #20 |
 | #22 | `docs/gestion-agil-informe-y-matriz` | #21 |
 
-**CI de GitHub:** Actions está habilitado y el workflow está en las ramas, pero al corte GitHub no registraba ejecuciones en estos PR. Resultado **por verificar** en la pestaña *Checks*/*Actions*. Si no aparece, revisar que el workflow se haya registrado (puede requerir que exista en `main`).
+**CI de GitHub:** al integrar #11 el workflow quedó registrado en `main` y ejecutó `npm test` en 3 pushes (runs 43059538428, 43059578124 y 43059601019), **todos en verde**. Antes no había ejecuciones porque el workflow no estaba en la rama por defecto.
 
 ## Bloqueos
 
@@ -61,9 +61,9 @@ Código en `src/` (50 archivos JS + HTML/CSS), 14 suites en `tests/`, `.github/w
 
 ## Próxima acción
 
-1. Revisar los PR en borrador (revisión humana real) y decidir el orden de integración; la integración en `main` requiere aprobación expresa.
+1. Al llegar el Sprint 2, integrar #14–#16 y #17 (re-apuntando cada PR a `main`, en orden) con aprobación expresa; revisión humana real si el equipo la exige.
 2. Decidir A/B de `DOCS/07`.
-3. Aprobar el merge del lote del Sprint 1 (#11–#13), configurar el Burn-up en Insights y tomar capturas auténticas.
+3. Configurar el Burn-up en Insights y tomar capturas auténticas (el lote del Sprint 1 ya está integrado).
 
 ## Cómo retomar
 

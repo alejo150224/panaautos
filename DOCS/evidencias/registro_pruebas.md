@@ -1,6 +1,6 @@
 # Registro de pruebas ejecutadas
 
-> Todas las ejecuciones son **locales** (macOS, Node v22.14.0), con almacenamiento aislado (memoria o carpetas temporales). **No hay resultados de CI de GitHub verificados**: el workflow existe en `.github/workflows/ci.yml` y los PR #11–#22 están abiertos, pero al corte GitHub no registraba ejecuciones (Actions habilitado). Por verificar. "Número de pruebas" no es cobertura: no se midió cobertura de código.
+> Todas las ejecuciones son **locales** (macOS, Node v22.14.0), con almacenamiento aislado (memoria o carpetas temporales). **CI de GitHub:** 3 ejecuciones en verde sobre `main` el 2026-11-11 (runs 43059538428 `7ff90a2`, 43059578124 `cbe9ba3`, 43059601019 `6f5cb6a`; pasos: checkout, setup-node y `npm test`). Antes no había ejecuciones porque el workflow no estaba en `main`. Sobre los PR abiertos aún no se ha visto. "Número de pruebas" no es cobertura: no se midió cobertura de código.
 
 **Comando:** `npm test` (equivale a `node --test "tests/**/*.test.js"`) · **Fecha:** 2026-11-10
 
@@ -35,3 +35,7 @@ Se sustituyó el almacenamiento transaccional por uno que ejecuta sin revertir y
 - Anónimo: solo ve el catálogo; formulario público sin contacto muestra el error y con correo muestra la confirmación; el vendedor ve la solicitud, el detalle y cambia el estado.
 - Administrador: menú Inventario e Historial (sin Propuestas ni Ventas).
 - **Capturas de pantalla:** pendientes (no se generan imágenes simuladas; ver `DOCS/12`).
+
+## Verificación sobre `main` tras integrar el lote del Sprint 1 (2026-11-11)
+
+`git switch main && git merge --ff-only origin/main && npm test` en `6f5cb6a`: **149 pruebas, 149 pasan, 0 fallan** (equivale al estado de HU05). La integración se hizo con *merge commit* de los PR #11, #12 y #13. Los Issues #1 y #5 se cerraron y sus tarjetas pasaron a Done automáticamente.
