@@ -36,4 +36,13 @@ const MODALIDADES_VENTA = Object.freeze({
   INTERCAMBIO: 'Intercambio de vehículo/bienes',
 });
 
-module.exports = { ROLES, NOMBRES_ROL, ESTADOS_VEHICULO, MODALIDADES_VENTA };
+/** Estados de atención de una solicitud de interés (HU06, HU08). Texto idéntico al Issue #8. */
+const ESTADOS_SOLICITUD = Object.freeze({
+  NUEVA: 'Nueva',
+  EN_CONTACTO: 'En contacto',
+  EN_NEGOCIACION: 'En negociación',
+  ATENDIDA: 'Atendida',
+  CERRADA: 'Cerrada',
+});
+
+module.exports = { ROLES, NOMBRES_ROL, ESTADOS_VEHICULO, MODALIDADES_VENTA, ESTADOS_SOLICITUD };
