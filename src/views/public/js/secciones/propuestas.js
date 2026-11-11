@@ -149,6 +149,34 @@ function zonaDecision(p, sesion, recargar) {
     },
     'Aprobar',
   );
-  zona.append(aprobar);
+  const rechazar = el('button', { type: 'button', class: 'accion peligro', id: 'btn-rechazar', onclick: () => pedirConfirmacion() }, 'Rechazar');
+
+  // Confirmación en la propia página (HU04: "Al confirmar el rechazo"); no usa diálogos del navegador.
+  function pedirConfirmacion() {
+    const confirmar = el(
+      'button',
+      {
+        type: 'button',
+        class: 'accion peligro',
+        id: 'btn-confirmar-rechazo',
+        onclick: async () => {
+          confirmar.disabled = true;
+          try {
+            const r = await api('POST', `/api/propuestas/${p.id}/rechazar`);
+            mostrarAviso(`Propuesta #${r.id} rechazada. Se conserva para consulta.`, 'ok');
+            await recargar();
+          } catch (error) {
+            mostrarAviso(mensajeDeError(error), 'error');
+            confirmar.disabled = false;
+          }
+        },
+      },
+      'Sí, confirmar rechazo',
+    );
+    const cancelar = el('button', { type: 'button', class: 'accion secundario', onclick: () => zona.replaceChildren(aprobar, rechazar) }, 'Cancelar');
+    zona.replaceChildren(el('span', {}, '¿Confirma el rechazo de esta propuesta?'), confirmar, cancelar);
+  }
+
+  zona.append(aprobar, rechazar);
   return zona;
 }

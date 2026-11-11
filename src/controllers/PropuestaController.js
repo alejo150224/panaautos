@@ -112,6 +112,21 @@ class PropuestaController {
   }
 
   /**
+   * Contrato (HU04): rechaza una propuesta pendiente. La propuesta conserva su información para
+   * consulta, deja de aparecer entre las pendientes y NO incorpora el vehículo al inventario.
+   *
+   * @param {import('../models/Usuario')|null} actor solo el rol Dueño.
+   * @param {number|string} id identificador de la propuesta.
+   * @returns {object} propuesta con estado "Rechazada", quién decidió y cuándo.
+   * @throws {import('./errores').ErrorNoAutenticado|import('./errores').ErrorPermiso} si no es el dueño.
+   * @throws {import('./errores').ErrorValidacion|import('./errores').ErrorNoEncontrado}
+   * @throws {import('./errores').ErrorConflicto} la propuesta ya fue decidida (aprobada o rechazada).
+   */
+  rechazarPropuesta(actor, id) {
+    return this._decidir(actor, id, ESTADOS_PROPUESTA.RECHAZADA);
+  }
+
+  /**
    * Aplica la decisión del dueño sobre una propuesta pendiente dentro de una transacción.
    * Una propuesta decidida no admite una segunda decisión (ni la misma ni la contraria).
    * @param {import('../models/Usuario')|null} actor
