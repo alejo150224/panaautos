@@ -14,6 +14,7 @@ const PropuestaDAO = require('./dao/PropuestaDAO');
 const PropuestaController = require('./controllers/PropuestaController');
 const HistorialDAO = require('./dao/HistorialDAO');
 const Auditor = require('./controllers/Auditor');
+const HistorialController = require('./controllers/HistorialController');
 
 /**
  * Raíz de composición: único lugar que conoce todas las capas y las conecta (inyección de
@@ -62,6 +63,7 @@ function crearSistema({ almacenamiento, reloj = () => new Date() }) {
       reloj,
       auditor,
     }),
+    historial: new HistorialController({ historialDAO: dao.historial, usuarioDAO: dao.usuarios }),
   };
 
   return { almacenamiento, reloj, dao, auditor, controladores };
