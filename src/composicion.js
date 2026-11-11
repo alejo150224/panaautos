@@ -10,6 +10,8 @@ const VentaController = require('./controllers/VentaController');
 const SolicitudDAO = require('./dao/SolicitudDAO');
 const CatalogoController = require('./controllers/CatalogoController');
 const SolicitudController = require('./controllers/SolicitudController');
+const PropuestaDAO = require('./dao/PropuestaDAO');
+const PropuestaController = require('./controllers/PropuestaController');
 
 /**
  * Raíz de composición: único lugar que conoce todas las capas y las conecta (inyección de
@@ -27,6 +29,7 @@ function crearSistema({ almacenamiento, reloj = () => new Date() }) {
     vehiculos: new VehiculoDAO(almacenamiento),
     ventas: new VentaDAO(almacenamiento),
     solicitudes: new SolicitudDAO(almacenamiento),
+    propuestas: new PropuestaDAO(almacenamiento),
   };
 
   const controladores = {
@@ -43,6 +46,12 @@ function crearSistema({ almacenamiento, reloj = () => new Date() }) {
     solicitudes: new SolicitudController({
       solicitudDAO: dao.solicitudes,
       vehiculoDAO: dao.vehiculos,
+      almacenamiento,
+      reloj,
+    }),
+    propuestas: new PropuestaController({
+      propuestaDAO: dao.propuestas,
+      usuarioDAO: dao.usuarios,
       almacenamiento,
       reloj,
     }),
