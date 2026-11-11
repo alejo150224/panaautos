@@ -1,6 +1,6 @@
 # Adaptación del plan a tres iteraciones (propuesta pendiente de aprobación)
 
-> **Estado: PROPUESTA.** Nada de este documento está aprobado por el equipo ni se ha aplicado al tablero. La línea base de `DOCS/04_plan_de_proyecto_y_modelos.md` **no se modifica**. Las cargas de abajo no son una velocidad medida ni un compromiso.
+> **Estado: alternativa A APLICADA al tablero el 2026-11-11** por instrucción del usuario («desarrollar completo lo que pide la guía»); **pendiente de validación del equipo**. La línea base de `DOCS/04_plan_de_proyecto_y_modelos.md` **no se modifica**. Las cargas son hipótesis de capacidad (12 SP), no una velocidad medida. La alternativa B sigue descrita como opción.
 
 ## 1. Qué exige la guía, qué decía el plan y qué cambia
 
@@ -50,6 +50,6 @@ Aritmética: 33 SP en 3 sprints exige un promedio de **11 SP por sprint**; con l
 
 ## 5. Qué NO se hizo
 
-- No se cambiaron Story Points, etiquetas, Issues ni el tablero.
+- No se cambiaron los Story Points de las historias, las etiquetas ni los Issues. El tablero sí se configuró con la alternativa A (respaldo previo en `DOCS/evidencias/tablero_respaldo_2026-11-10.json`).
 - No se simularon votaciones de Planning Poker, reuniones Scrum ni seis semanas de trabajo.
 - El trabajo de código ya existente en ramas es **reversible** y no depende de esta decisión: ninguna historia cambia de puntos ni de contenido bajo A o B.
