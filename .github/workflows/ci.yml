@@ -1,0 +1,22 @@
+name: CI
+
+# Pruebas automatizadas en cada pull request y en cada push a main.
+# No usa secretos ni servicios externos: el proyecto no tiene dependencias de ejecución.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Pruebas automatizadas
+        run: npm test
