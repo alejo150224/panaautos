@@ -31,6 +31,9 @@ const PERMISOS = Object.freeze({
   // HU07 (Issue #7): "El vendedor autorizado puede consultar". El Dueño y el Administrador
   // consultan reportes e historial, no gestionan solicitudes (DOCS/01 §2).
   'solicitudes:consultar': [ROLES.VENDEDOR],
+
+  // HU08 (Issue #8): "usuario sin permiso de gestión" no puede modificar el estado.
+  'solicitudes:gestionar': [ROLES.VENDEDOR],
 });
 
 /**
