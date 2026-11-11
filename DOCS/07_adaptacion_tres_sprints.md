@@ -1,6 +1,6 @@
 # Adaptación del plan a tres iteraciones (propuesta pendiente de aprobación)
 
-> **Estado: alternativa A APLICADA al tablero el 2026-11-11** por instrucción del usuario («desarrollar completo lo que pide la guía»); **pendiente de validación del equipo**. La línea base de `DOCS/04_plan_de_proyecto_y_modelos.md` **no se modifica**. Las cargas son hipótesis de capacidad (12 SP), no una velocidad medida. La alternativa B sigue descrita como opción.
+> **Estado: alternativa A APLICADA al tablero el 2026-11-11** por instrucción del usuario («desarrollar completo lo que pide la guía»); **pendiente de validación del equipo**. La línea base de `DOCS/04_plan_de_proyecto_y_modelos.md` **no se modifica**. Las cargas son hipótesis de capacidad (12 SP), no una velocidad medida. La alternativa B queda sin objeto inmediato: las diez historias ya están integradas (las de los Sprints 2 y 3, por adelantado el 2026-11-11; ver `DOCS/05`).
 
 ## 1. Qué exige la guía, qué decía el plan y qué cambia
 

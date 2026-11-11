@@ -175,12 +175,12 @@ Este README resume el alcance documentado de **HU01–HU10**. No incorpora las t
 
 ## 10. Estado de la implementación y cómo ejecutarla
 
-> **Estado real (corte 2026-11-11):** HU01 y HU05 (los 10 SP del Sprint 1) están **integradas en `main`** (PR #12 y #13) y cerradas; las otras ocho historias tienen código y pruebas en PR en borrador (#14–#22) y siguen en *In review*. La integración fue con **autorrevisión asistida, sin revisión de pares humana**. El CI de GitHub ejecutó `npm test` en verde sobre `main`. Ver [`DOCS/05`](DOCS/05_informe_gestion_y_productividad.md) (provisional) y [`DOCS/06`](DOCS/06_matriz_cumplimiento_guia.md).
+> **Estado real (corte 2026-11-11):** las diez historias HU01–HU10 están **integradas en `main`** (PR #12–#21), con sus Issues cerrados y las tarjetas en Done. De los 33 SP, **10 SP son del Sprint 1** (HU01 y HU05) y 23 SP se integraron por adelantado desde los Sprints 2 y 3. Las integraciones fueron con **autorrevisión asistida, sin revisión de pares humana**. El CI de GitHub corre `npm test` en verde. Ver [`DOCS/05`](DOCS/05_informe_gestion_y_productividad.md) (provisional hasta el 2026-11-17) y [`DOCS/06`](DOCS/06_matriz_cumplimiento_guia.md).
 
 Prototipo en **Node.js 22+** (JavaScript, CommonJS, JSDoc), sin dependencias que instalar, con arquitectura en tres capas (`src/views`, `src/controllers`, `src/dao`) y entidades en `src/models`. Usa **solo datos ficticios** y escucha únicamente en `127.0.0.1`.
 
 ```bash
-npm test                  # pruebas automáticas (346 en la rama con las diez historias)
+npm test                  # pruebas automáticas (346)
 npm start                 # http://127.0.0.1:3000 con persistencia en data/panaautos.json
 npm run start:memoria     # todo en memoria (se pierde al cerrar)
 npm run start:vacio       # en memoria y sin vehículos (caso vacío de HU01)

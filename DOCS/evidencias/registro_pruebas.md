@@ -1,6 +1,6 @@
 # Registro de pruebas ejecutadas
 
-> Todas las ejecuciones son **locales** (macOS, Node v22.14.0), con almacenamiento aislado (memoria o carpetas temporales). **CI de GitHub:** 3 ejecuciones en verde sobre `main` el 2026-11-11 (runs 43059538428 `7ff90a2`, 43059578124 `cbe9ba3`, 43059601019 `6f5cb6a`; pasos: checkout, setup-node y `npm test`). Antes no había ejecuciones porque el workflow no estaba en `main`. Sobre los PR abiertos aún no se ha visto. "Número de pruebas" no es cobertura: no se midió cobertura de código.
+> Todas las ejecuciones son **locales** (macOS, Node v22.14.0), con almacenamiento aislado (memoria o carpetas temporales). **CI de GitHub:** 3 ejecuciones en verde sobre `main` el 2026-11-11 (runs 43059538428 `7ff90a2`, 43059578124 `cbe9ba3`, 43059601019 `6f5cb6a`; pasos: checkout, setup-node y `npm test`). Antes no había ejecuciones porque el workflow no estaba en `main`. Después también corrió en verde en los 9 pushes a `main` (uno por cada merge) y en los PR de documentación #22 y #23. "Número de pruebas" no es cobertura: no se midió cobertura de código.
 
 **Comando:** `npm test` (equivale a `node --test "tests/**/*.test.js"`) · **Fecha:** 2026-11-10
 
@@ -39,3 +39,7 @@ Se sustituyó el almacenamiento transaccional por uno que ejecuta sin revertir y
 ## Verificación sobre `main` tras integrar el lote del Sprint 1 (2026-11-11)
 
 `git switch main && git merge --ff-only origin/main && npm test` en `6f5cb6a`: **149 pruebas, 149 pasan, 0 fallan** (equivale al estado de HU05). La integración se hizo con *merge commit* de los PR #11, #12 y #13. Los Issues #1 y #5 se cerraron y sus tarjetas pasaron a Done automáticamente.
+
+## Verificación final sobre `main` tras integrar las diez historias (2026-11-11)
+
+`git switch main && git merge --ff-only origin/main && npm test` en `2b66154`: **346 pruebas, 346 pasan, 0 fallan**. El código de `main` es idéntico al de `feature/issue-10-consultar-historial` (`git diff` sin diferencias en `src`, `tests`, `package.json` y `.github`). Los 10 Issues quedaron cerrados y las 10 tarjetas en Done por la automatización del tablero.
