@@ -131,6 +131,11 @@ El cálculo del plazo utiliza redondeo hacia arriba: **18/10 → 2 sprints para 
 | [02_priorizacion.md](DOCS/02_priorizacion.md) | Priorización MoSCoW, valor de negocio, complejidad cualitativa y alcance del MVP. |
 | [03_estimacion_y_costos.md](DOCS/03_estimacion_y_costos.md) | Organización del equipo, historia pivote, simulación de estimación, esfuerzo y presupuesto. |
 | [04_plan_de_proyecto_y_modelos.md](DOCS/04_plan_de_proyecto_y_modelos.md) | Justificación de Scrum, velocidad asumida, distribución de sprints y resumen comercial. |
+| [05_informe_gestion_y_productividad.md](DOCS/05_informe_gestion_y_productividad.md) | **Provisional.** Informe de gestión y productividad con los cinco apartados de la guía. |
+| [06_matriz_cumplimiento_guia.md](DOCS/06_matriz_cumplimiento_guia.md) | Matriz de cumplimiento de la guía y trazabilidad HU → criterio → código → prueba → rama. |
+| [07_adaptacion_tres_sprints.md](DOCS/07_adaptacion_tres_sprints.md) | **Propuesta pendiente de aprobación** para adaptar el plan de 4 sprints a los 3 de la guía. |
+| [08](DOCS/08_arquitectura_y_mapa_de_archivos.md) · [09](DOCS/09_ruta_de_demostracion_y_datos.md) · [10](DOCS/10_defensa_metodos_y_preguntas.md) · [11](DOCS/11_registro_decisiones_limites_y_pendientes.md) · [12](DOCS/12_registro_continuidad.md) | Material de apoyo: arquitectura, ruta de demostración y datos ficticios, métodos y preguntas de defensa, decisiones/límites/pendientes y registro de continuidad. |
+| [evidencias/registro_pruebas.md](DOCS/evidencias/registro_pruebas.md) | Pruebas ejecutadas, fechas, commits y resultados reales. |
 
 Las historias se consultan en [GitHub Issues](https://github.com/alejo150224/panaautos/issues). La pestaña [Projects](https://github.com/alejo150224/panaautos/projects) es el acceso para revisar los tableros del repositorio; este enlace no certifica que las historias ya estén vinculadas a un tablero.
 
@@ -164,4 +169,26 @@ El presupuesto de las diez historias supone una base web con acceso por roles, r
 
 No se incluyen pagos en línea, aprobación de créditos, reservas automáticas ni incorporación automática al inventario de bienes recibidos por intercambio. El presupuesto tampoco añade infraestructura, licencias, impuestos, mantenimiento ni margen comercial.
 
-Este README resume el alcance documentado de **HU01–HU10**. No incorpora las trece historias **HU-D** del otro documento ni certifica avance de implementación. Los cambios de alcance, estimación o planificación deben mantenerse coherentes entre Issues y los documentos de `DOCS`.
+Este README resume el alcance documentado de **HU01–HU10**. No incorpora las trece historias **HU-D** del otro documento ni certifica historias terminadas (véase la sección 10 para el estado real). Los cambios de alcance, estimación o planificación deben mantenerse coherentes entre Issues y los documentos de `DOCS`.
+
+---
+
+## 10. Estado de la implementación y cómo ejecutarla
+
+> **Estado real (corte 2026-11-10):** las diez historias HU01–HU10 tienen código y pruebas automáticas **en ramas de trabajo**, pero **ninguna está integrada en `main`, revisada por pares ni cerrada**; por la definición de terminado de este repositorio, la velocidad lograda es **0 SP**. Las pruebas son locales; la CI de GitHub aún no se ha ejecutado. Ver [`DOCS/05`](DOCS/05_informe_gestion_y_productividad.md) (provisional) y [`DOCS/06`](DOCS/06_matriz_cumplimiento_guia.md).
+
+Prototipo en **Node.js 22+** (JavaScript, CommonJS, JSDoc), sin dependencias que instalar, con arquitectura en tres capas (`src/views`, `src/controllers`, `src/dao`) y entidades en `src/models`. Usa **solo datos ficticios** y escucha únicamente en `127.0.0.1`.
+
+```bash
+npm test                  # pruebas automáticas (346 en la rama con las diez historias)
+npm start                 # http://127.0.0.1:3000 con persistencia en data/panaautos.json
+npm run start:memoria     # todo en memoria (se pierde al cerrar)
+npm run start:vacio       # en memoria y sin vehículos (caso vacío de HU01)
+npm run demo:reiniciar    # borra solo los datos de demostración
+```
+
+Cómo recorrer cada historia: [`DOCS/09`](DOCS/09_ruta_de_demostracion_y_datos.md). Mapa de la arquitectura: [`DOCS/08`](DOCS/08_arquitectura_y_mapa_de_archivos.md).
+
+**Trabajo técnico habilitante (sin Story Points):** acceso por roles con una sesión de demostración sin contraseñas, registros base de vehículos y clientes, un catálogo público mínimo para abrir el formulario de interés, el almacenamiento y el servidor local. `DOCS/03` los trataba como supuestos; ahora existen como código, pero su esfuerzo no estaba presupuestado.
+
+**Asistencia de IA:** el código, las pruebas y la documentación de esta entrega se elaboraron con ayuda de Claude Code. Cada integrante debe revisar y comprender lo que defienda; no se atribuye a ningún integrante una revisión que no haya hecho.
