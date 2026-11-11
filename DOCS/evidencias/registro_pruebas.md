@@ -34,7 +34,7 @@ Se sustituyó el almacenamiento transaccional por uno que ejecuta sin revertir y
 - Dueño: ve "Historial" con la entrada "Registro de venta"; propuesta registrada por el encargado → rechazo con confirmación en pantalla → "Rechazada"; filtros de historial por tipo.
 - Anónimo: solo ve el catálogo; formulario público sin contacto muestra el error y con correo muestra la confirmación; el vendedor ve la solicitud, el detalle y cambia el estado.
 - Administrador: menú Inventario e Historial (sin Propuestas ni Ventas).
-- **Capturas de pantalla:** pendientes (no se generan imágenes simuladas; ver `DOCS/12`).
+- **Capturas de pantalla:** incorporadas el 2026-11-11 en `DOCS/evidencias/capturas/` (ver su índice).
 
 ## Verificación sobre `main` tras integrar el lote del Sprint 1 (2026-11-11)
 
