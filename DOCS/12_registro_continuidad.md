@@ -29,7 +29,7 @@ Código en `src/` (50 archivos JS + HTML/CSS), 14 suites en `tests/`, `.github/w
 
 ## Pruebas ejecutadas
 
-`npm test` local, 2026-11-10, Node v22.14.0: 346/346 en la punta y verde en cada rama (detalle en `DOCS/evidencias/registro_pruebas.md`). **CI de GitHub: no ejecutado.**
+`npm test` local, 2026-11-10, Node v22.14.0: 346/346 en la punta y verde en cada rama (detalle en `DOCS/evidencias/registro_pruebas.md`). **CI de GitHub: sin ejecuciones registradas al corte (por verificar en la pestaña Actions).**
 
 ## PR
 
