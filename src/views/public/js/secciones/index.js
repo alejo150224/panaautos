@@ -5,9 +5,11 @@
 import { catalogo } from './catalogo.js'; // HU06 (pública)
 import { inventario } from './inventario.js'; // HU01
 import { ventas } from './ventas.js'; // HU05
+import { solicitudes } from './solicitudes.js'; // HU07 (+ HU08)
 
 export const SECCIONES = [
   catalogo,
   inventario,
   ventas,
+  solicitudes,
 ];

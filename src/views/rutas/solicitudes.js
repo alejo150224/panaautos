@@ -18,5 +18,16 @@ module.exports = function rutasSolicitudes({ catalogo, solicitudes }) {
       ruta: '/api/solicitudes',
       manejador: ({ cuerpo }) => ({ estado: 201, cuerpo: solicitudes.registrarSolicitud(cuerpo) }),
     },
+    // HU07 (internas: exigen sesión de vendedor)
+    {
+      metodo: 'GET',
+      ruta: '/api/solicitudes',
+      manejador: ({ actor }) => ({ estado: 200, cuerpo: solicitudes.listarSolicitudes(actor) }),
+    },
+    {
+      metodo: 'GET',
+      ruta: '/api/solicitudes/:id',
+      manejador: ({ actor, params }) => ({ estado: 200, cuerpo: solicitudes.obtenerSolicitud(actor, params.id) }),
+    },
   ];
 };

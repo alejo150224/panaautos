@@ -1,10 +1,13 @@
 'use strict';
 
 const { ESTADOS_SOLICITUD } = require('../models/enums');
-const { ErrorNoEncontrado, ErrorConflicto } = require('./errores');
+const { ErrorNoEncontrado, ErrorConflicto, ErrorValidacion } = require('./errores');
 const { Errores, texto, aIdentificador } = require('./validaciones');
 const { ESTADOS_PUBLICOS } = require('./CatalogoController');
+const { exigirPermiso } = require('./permisos');
 
+/** Mensaje exacto exigido por el criterio 3 del Issue #7. */
+const MENSAJE_SIN_SOLICITUDES = 'No hay solicitudes registradas';
 const MENSAJE_CONFIRMACION = 'Solicitud registrada. Nos pondremos en contacto con usted.';
 const REGEX_CORREO = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const REGEX_TELEFONO = /^[+()\-\s\d]{7,20}$/;
@@ -67,6 +70,64 @@ class SolicitudController {
   }
 
   /**
+   * Contrato (HU07): lista las solicitudes registradas, las más recientes primero.
+   * @param {import('../models/Usuario')|null} actor debe tener rol Vendedor.
+   * @returns {{solicitudes: Array<{id: number, nombreCliente: string, vehiculo: {id: number, descripcion: string},
+   *            fecha: string, estado: string}>, mensaje: string|null}}
+   *          `mensaje` = "No hay solicitudes registradas" si no existe ninguna.
+   * @throws {import('./errores').ErrorNoAutenticado|import('./errores').ErrorPermiso}
+   */
+  listarSolicitudes(actor) {
+    exigirPermiso(actor, 'solicitudes:consultar');
+    const solicitudes = this.solicitudDAO
+      .todos()
+      .sort((a, b) => (a.fecha < b.fecha ? 1 : a.fecha > b.fecha ? -1 : b.id - a.id))
+      .map((s) => ({
+        id: s.id,
+        nombreCliente: s.nombreCliente,
+        vehiculo: { id: s.vehiculoId, descripcion: this._descripcionVehiculo(s.vehiculoId) },
+        fecha: s.fecha,
+        estado: s.estado,
+      }));
+    return { solicitudes, mensaje: solicitudes.length === 0 ? MENSAJE_SIN_SOLICITUDES : null };
+  }
+
+  /**
+   * Contrato (HU07): detalle de una solicitud con los datos de contacto y el vehículo asociado.
+   * @param {import('../models/Usuario')|null} actor debe tener rol Vendedor.
+   * @param {number|string} id identificador de la solicitud.
+   * @returns {{id: number, nombreCliente: string, telefono: string, correo: string, mensaje: string, estado: string,
+   *            fecha: string, vehiculo: {id: number, marca: string, modelo: string, anio: number, precio: number, estado: string}|null}}
+   * @throws {import('./errores').ErrorNoAutenticado|import('./errores').ErrorPermiso}
+   * @throws {import('./errores').ErrorValidacion} identificador inválido.
+   * @throws {import('./errores').ErrorNoEncontrado} la solicitud no existe.
+   */
+  obtenerSolicitud(actor, id) {
+    exigirPermiso(actor, 'solicitudes:consultar');
+    const solicitudId = aIdentificador(id);
+    if (solicitudId === null) throw new ErrorValidacion([{ campo: 'id', mensaje: 'Identificador de solicitud inválido' }]);
+    const s = this.solicitudDAO.porId(solicitudId);
+    if (!s) throw new ErrorNoEncontrado('La solicitud no existe');
+    const v = this.vehiculoDAO.porId(s.vehiculoId);
+    return {
+      id: s.id,
+      nombreCliente: s.nombreCliente,
+      telefono: s.telefono,
+      correo: s.correo,
+      mensaje: s.mensaje,
+      estado: s.estado,
+      fecha: s.fecha,
+      vehiculo: v ? { id: v.id, marca: v.marca, modelo: v.modelo, anio: v.anio, precio: v.precio, estado: v.estado } : null,
+    };
+  }
+
+  /** @returns {string} "Marca Modelo Año" del vehículo, o un texto de reserva si no existe. */
+  _descripcionVehiculo(vehiculoId) {
+    const v = this.vehiculoDAO.porId(vehiculoId);
+    return v ? `${v.marca} ${v.modelo} ${v.anio}` : 'Vehículo no disponible';
+  }
+
+  /**
    * Valida y normaliza el formulario público informando todos los problemas a la vez.
    * @param {unknown} datos
    * @returns {{vehiculoId: number, nombre: string, telefono: string, correo: string, mensaje: string}}
@@ -105,3 +166,4 @@ class SolicitudController {
 
 module.exports = SolicitudController;
 module.exports.MENSAJE_CONFIRMACION = MENSAJE_CONFIRMACION;
+module.exports.MENSAJE_SIN_SOLICITUDES = MENSAJE_SIN_SOLICITUDES;
