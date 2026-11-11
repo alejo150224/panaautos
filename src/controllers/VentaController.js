@@ -1,6 +1,6 @@
 'use strict';
 
-const { ESTADOS_VEHICULO, MODALIDADES_VENTA } = require('../models/enums');
+const { ESTADOS_VEHICULO, MODALIDADES_VENTA, ACCIONES_HISTORIAL, TIPOS_ELEMENTO } = require('../models/enums');
 const { exigirPermiso } = require('./permisos');
 const { ErrorNoEncontrado, ErrorConflicto } = require('./errores');
 const { Errores, aIdentificador, esNumeroPositivo, esFechaIso } = require('./validaciones');
@@ -23,14 +23,15 @@ class VentaController {
    * @param {{ventaDAO: import('../dao/VentaDAO'), vehiculoDAO: import('../dao/VehiculoDAO'),
    *          clienteDAO: import('../dao/ClienteDAO'),
    *          almacenamiento: import('../dao/almacenamiento/AlmacenamientoMemoria'),
-   *          reloj: () => Date}} dependencias
+   *          reloj: () => Date, auditor: import('./Auditor')}} dependencias
    */
-  constructor({ ventaDAO, vehiculoDAO, clienteDAO, almacenamiento, reloj }) {
+  constructor({ ventaDAO, vehiculoDAO, clienteDAO, almacenamiento, reloj, auditor }) {
     this.ventaDAO = ventaDAO;
     this.vehiculoDAO = vehiculoDAO;
     this.clienteDAO = clienteDAO;
     this.almacenamiento = almacenamiento;
     this.reloj = reloj;
+    this.auditor = auditor;
   }
 
   /**
@@ -95,6 +96,14 @@ class VentaController {
         registradaEn: this.reloj().toISOString(),
       });
       this.vehiculoDAO.cambiarEstado(vehiculoId, ESTADOS_VEHICULO.VENDIDO);
+      // HU09: la entrada de historial se guarda en la misma transacción que la venta.
+      this.auditor.registrar(
+        actor,
+        ACCIONES_HISTORIAL.VENTA_REGISTRADA,
+        TIPOS_ELEMENTO.VENTA,
+        venta.id,
+        `Vehículo #${vehiculoId} vendido · ${modalidad}`,
+      );
       return { ...venta, vehiculoEstado: ESTADOS_VEHICULO.VENDIDO };
     });
   }

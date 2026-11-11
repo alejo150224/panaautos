@@ -1,6 +1,6 @@
 'use strict';
 
-const { ESTADOS_SOLICITUD } = require('../models/enums');
+const { ESTADOS_SOLICITUD, ACCIONES_HISTORIAL, TIPOS_ELEMENTO } = require('../models/enums');
 const { ErrorNoEncontrado, ErrorConflicto, ErrorValidacion } = require('./errores');
 const { Errores, texto, aIdentificador } = require('./validaciones');
 const { ESTADOS_PUBLICOS } = require('./CatalogoController');
@@ -21,13 +21,14 @@ const REGEX_TELEFONO = /^[+()\-\s\d]{7,20}$/;
 class SolicitudController {
   /**
    * @param {{solicitudDAO: import('../dao/SolicitudDAO'), vehiculoDAO: import('../dao/VehiculoDAO'),
-   *          almacenamiento: object, reloj: () => Date}} dependencias
+   *          almacenamiento: object, reloj: () => Date, auditor: import('./Auditor')}} dependencias
    */
-  constructor({ solicitudDAO, vehiculoDAO, almacenamiento, reloj }) {
+  constructor({ solicitudDAO, vehiculoDAO, almacenamiento, reloj, auditor }) {
     this.solicitudDAO = solicitudDAO;
     this.vehiculoDAO = vehiculoDAO;
     this.almacenamiento = almacenamiento;
     this.reloj = reloj;
+    this.auditor = auditor;
   }
 
   /**
@@ -151,6 +152,14 @@ class SolicitudController {
       if (estadoAnterior === estado) return { id: solicitud.id, estado, estadoAnterior, cambio: false };
       solicitud.estado = estado;
       this.solicitudDAO.actualizar(solicitud);
+      // HU09: un cambio efectivo de estado deja entrada de historial (en la misma transacción).
+      this.auditor.registrar(
+        actor,
+        ACCIONES_HISTORIAL.SOLICITUD_ESTADO_CAMBIADO,
+        TIPOS_ELEMENTO.SOLICITUD,
+        solicitud.id,
+        `${estadoAnterior} → ${estado}`,
+      );
       return { id: solicitud.id, estado, estadoAnterior, cambio: true };
     });
   }

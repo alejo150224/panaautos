@@ -1,6 +1,6 @@
 'use strict';
 
-const { ORIGENES_PROPUESTA, ESTADOS_PROPUESTA, ROLES } = require('../models/enums');
+const { ORIGENES_PROPUESTA, ESTADOS_PROPUESTA, ROLES, ACCIONES_HISTORIAL, TIPOS_ELEMENTO } = require('../models/enums');
 const { exigirPermiso } = require('./permisos');
 const { ErrorNoEncontrado, ErrorPermiso, ErrorValidacion, ErrorConflicto } = require('./errores');
 const { Errores, texto, aIdentificador, esNumeroPositivo } = require('./validaciones');
@@ -17,13 +17,14 @@ const MENSAJE_SIN_PROPUESTAS = 'No hay propuestas registradas';
 class PropuestaController {
   /**
    * @param {{propuestaDAO: import('../dao/PropuestaDAO'), usuarioDAO: import('../dao/UsuarioDAO'),
-   *          almacenamiento: object, reloj: () => Date}} dependencias
+   *          almacenamiento: object, reloj: () => Date, auditor: import('./Auditor')}} dependencias
    */
-  constructor({ propuestaDAO, usuarioDAO, almacenamiento, reloj }) {
+  constructor({ propuestaDAO, usuarioDAO, almacenamiento, reloj, auditor }) {
     this.propuestaDAO = propuestaDAO;
     this.usuarioDAO = usuarioDAO;
     this.almacenamiento = almacenamiento;
     this.reloj = reloj;
+    this.auditor = auditor;
   }
 
   /**
@@ -39,8 +40,8 @@ class PropuestaController {
   registrarPropuesta(actor, datos) {
     exigirPermiso(actor, 'propuestas:registrar');
     const { marca, modelo, anio, origen, precioEstimado } = this._validar(datos);
-    const propuesta = this.almacenamiento.transaccion(() =>
-      this.propuestaDAO.insertar({
+    const propuesta = this.almacenamiento.transaccion(() => {
+      const nueva = this.propuestaDAO.insertar({
         marca,
         modelo,
         anio,
@@ -51,7 +52,17 @@ class PropuestaController {
         estado: ESTADOS_PROPUESTA.PENDIENTE,
         decididaPor: null,
         fechaDecision: null,
-      }));
+      });
+      // HU09: entrada de historial en la misma transacción.
+      this.auditor.registrar(
+        actor,
+        ACCIONES_HISTORIAL.PROPUESTA_REGISTRADA,
+        TIPOS_ELEMENTO.PROPUESTA,
+        nueva.id,
+        `${marca} ${modelo} ${anio} · ${origen}`,
+      );
+      return nueva;
+    });
     return this._presentar(propuesta);
   }
 
@@ -150,6 +161,14 @@ class PropuestaController {
       propuesta.decididaPor = actor.id;
       propuesta.fechaDecision = this.reloj().toISOString();
       this.propuestaDAO.actualizar(propuesta);
+      // HU09: la decisión y su entrada de historial se confirman juntas.
+      this.auditor.registrar(
+        actor,
+        estadoDestino === ESTADOS_PROPUESTA.APROBADA ? ACCIONES_HISTORIAL.PROPUESTA_APROBADA : ACCIONES_HISTORIAL.PROPUESTA_RECHAZADA,
+        TIPOS_ELEMENTO.PROPUESTA,
+        propuesta.id,
+        `Pendiente → ${estadoDestino}`,
+      );
       return this._presentar(propuesta);
     });
   }

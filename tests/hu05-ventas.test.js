@@ -214,6 +214,7 @@ describe('HU05 · CA3 — venta y estado "Vendido" juntos; no se vende dos veces
       clienteDAO: s.dao.clientes,
       almacenamiento: s.almacenamiento,
       reloj: s.reloj,
+      auditor: s.auditor,
     });
     assert.throws(() => controlador.registrarVenta(vendedor(s), datosValidos()), /fallo simulado/);
     assert.equal(s.dao.ventas.todos().length, 0, 'la venta no debe quedar guardada');

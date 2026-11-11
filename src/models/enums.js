@@ -58,6 +58,30 @@ const ESTADOS_PROPUESTA = Object.freeze({
   RECHAZADA: 'Rechazada',
 });
 
+/** Acciones que se registran automáticamente en el historial (HU09, Issue #9). */
+const ACCIONES_HISTORIAL = Object.freeze({
+  PROPUESTA_REGISTRADA: 'Registro de propuesta',
+  PROPUESTA_APROBADA: 'Aprobación de propuesta',
+  PROPUESTA_RECHAZADA: 'Rechazo de propuesta',
+  VENTA_REGISTRADA: 'Registro de venta',
+  SOLICITUD_ESTADO_CAMBIADO: 'Cambio de estado de solicitud',
+});
+
+/** Tipos de elemento afectado por una acción (HU09, filtro de HU10). */
+const TIPOS_ELEMENTO = Object.freeze({
+  PROPUESTA: 'Propuesta',
+  VENTA: 'Venta',
+  SOLICITUD: 'Solicitud',
+});
+
 module.exports = {
-  ROLES, NOMBRES_ROL, ESTADOS_VEHICULO, MODALIDADES_VENTA, ESTADOS_SOLICITUD, ORIGENES_PROPUESTA, ESTADOS_PROPUESTA,
+  ROLES,
+  NOMBRES_ROL,
+  ESTADOS_VEHICULO,
+  MODALIDADES_VENTA,
+  ESTADOS_SOLICITUD,
+  ORIGENES_PROPUESTA,
+  ESTADOS_PROPUESTA,
+  ACCIONES_HISTORIAL,
+  TIPOS_ELEMENTO,
 };
