@@ -125,7 +125,30 @@ async function mostrarDetalle(zona, id, sesion, recargar) {
   }
 }
 
-/** Espacio para los botones de decisión del dueño (HU03 y HU04 los añaden). */
-function zonaDecision() {
-  return el('div', { class: 'fila-acciones' });
+/** Botones de decisión del dueño: solo para propuestas pendientes (HU03 aprueba; HU04 rechaza). */
+function zonaDecision(p, sesion, recargar) {
+  const zona = el('div', { class: 'fila-acciones', id: 'zona-decision' });
+  if (p.estado !== 'Pendiente' || !sesion.permisos.includes('propuestas:decidir')) return zona;
+  const aprobar = el(
+    'button',
+    {
+      type: 'button',
+      class: 'accion',
+      id: 'btn-aprobar',
+      onclick: async () => {
+        aprobar.disabled = true;
+        try {
+          const r = await api('POST', `/api/propuestas/${p.id}/aprobar`);
+          mostrarAviso(`Propuesta #${r.id} aprobada. No se incorporó ningún vehículo al inventario.`, 'ok');
+          await recargar();
+        } catch (error) {
+          mostrarAviso(mensajeDeError(error), 'error');
+          aprobar.disabled = false;
+        }
+      },
+    },
+    'Aprobar',
+  );
+  zona.append(aprobar);
+  return zona;
 }

@@ -2,7 +2,7 @@
 
 const { ORIGENES_PROPUESTA, ESTADOS_PROPUESTA, ROLES } = require('../models/enums');
 const { exigirPermiso } = require('./permisos');
-const { ErrorNoEncontrado, ErrorPermiso, ErrorValidacion } = require('./errores');
+const { ErrorNoEncontrado, ErrorPermiso, ErrorValidacion, ErrorConflicto } = require('./errores');
 const { Errores, texto, aIdentificador, esNumeroPositivo } = require('./validaciones');
 
 const MENSAJE_SIN_PROPUESTAS = 'No hay propuestas registradas';
@@ -94,6 +94,49 @@ class PropuestaController {
     if (!propuesta) throw new ErrorNoEncontrado('La propuesta no existe');
     if (!this._puedeVer(actor, propuesta)) throw new ErrorPermiso('Solo puede consultar las propuestas que usted presentó');
     return this._presentar(propuesta);
+  }
+
+  /**
+   * Contrato (HU03): aprueba una propuesta pendiente. La decisión se conserva y es definitiva.
+   * NO incorpora el vehículo al inventario ni lo marca como disponible.
+   *
+   * @param {import('../models/Usuario')|null} actor solo el rol Dueño.
+   * @param {number|string} id identificador de la propuesta.
+   * @returns {object} propuesta con estado "Aprobada", quién decidió y cuándo.
+   * @throws {import('./errores').ErrorNoAutenticado|import('./errores').ErrorPermiso} si no es el dueño.
+   * @throws {import('./errores').ErrorValidacion|import('./errores').ErrorNoEncontrado}
+   * @throws {import('./errores').ErrorConflicto} la propuesta ya fue decidida (aprobada o rechazada).
+   */
+  aprobarPropuesta(actor, id) {
+    return this._decidir(actor, id, ESTADOS_PROPUESTA.APROBADA);
+  }
+
+  /**
+   * Aplica la decisión del dueño sobre una propuesta pendiente dentro de una transacción.
+   * Una propuesta decidida no admite una segunda decisión (ni la misma ni la contraria).
+   * @param {import('../models/Usuario')|null} actor
+   * @param {number|string} id
+   * @param {string} estadoDestino "Aprobada" o "Rechazada".
+   * @returns {object} propuesta decidida.
+   */
+  _decidir(actor, id, estadoDestino) {
+    exigirPermiso(actor, 'propuestas:decidir');
+    const propuestaId = aIdentificador(id);
+    if (propuestaId === null) throw new ErrorValidacion([{ campo: 'id', mensaje: 'Identificador de propuesta inválido' }]);
+
+    return this.almacenamiento.transaccion(() => {
+      const propuesta = this.propuestaDAO.porId(propuestaId);
+      if (!propuesta) throw new ErrorNoEncontrado('La propuesta no existe');
+      if (propuesta.estado !== ESTADOS_PROPUESTA.PENDIENTE) {
+        const decision = propuesta.estado === ESTADOS_PROPUESTA.APROBADA ? 'aprobada' : 'rechazada';
+        throw new ErrorConflicto(`La propuesta ya fue ${decision}: la decisión del dueño no se puede cambiar`);
+      }
+      propuesta.estado = estadoDestino;
+      propuesta.decididaPor = actor.id;
+      propuesta.fechaDecision = this.reloj().toISOString();
+      this.propuestaDAO.actualizar(propuesta);
+      return this._presentar(propuesta);
+    });
   }
 
   /** @returns {boolean} el dueño ve todo; un empleado solo lo propio. */
