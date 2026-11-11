@@ -34,6 +34,12 @@ const PERMISOS = Object.freeze({
 
   // HU08 (Issue #8): "usuario sin permiso de gestión" no puede modificar el estado.
   'solicitudes:gestionar': [ROLES.VENDEDOR],
+
+  // HU02 (Issue #2): "Como empleado/vendedor". Se autoriza a los empleados que presentan
+  // propuestas (Vendedor y Encargado de Inventario); Dueño y Administrador no las presentan.
+  'propuestas:registrar': [ROLES.VENDEDOR, ROLES.ENCARGADO_INVENTARIO],
+  // Consulta: el Dueño revisa todas; el empleado solo las que presentó (regla en el controlador).
+  'propuestas:consultar': [ROLES.DUENO, ROLES.VENDEDOR, ROLES.ENCARGADO_INVENTARIO],
 });
 
 /**

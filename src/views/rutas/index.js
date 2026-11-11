@@ -15,6 +15,7 @@ function crearRutas(controladores) {
     require('./inventario'), // HU01
     require('./ventas'), // HU05
     require('./solicitudes'), // HU06 (+ HU07, HU08)
+    require('./propuestas'), // HU02 (+ HU03, HU04)
     // Las rutas de cada historia se registran aquí al integrarla.
   ].flatMap((fabrica) => fabrica(controladores));
 }

@@ -45,4 +45,19 @@ const ESTADOS_SOLICITUD = Object.freeze({
   CERRADA: 'Cerrada',
 });
 
-module.exports = { ROLES, NOMBRES_ROL, ESTADOS_VEHICULO, MODALIDADES_VENTA, ESTADOS_SOLICITUD };
+/** Orígenes válidos de una propuesta de incorporación (HU02). Texto idéntico al Issue #2. */
+const ORIGENES_PROPUESTA = Object.freeze({
+  COMPRA_DIRECTA: 'Compra directa',
+  EMPLEADO: 'Proporcionado por empleado',
+});
+
+/** Estados de una propuesta (HU02–HU04). */
+const ESTADOS_PROPUESTA = Object.freeze({
+  PENDIENTE: 'Pendiente',
+  APROBADA: 'Aprobada',
+  RECHAZADA: 'Rechazada',
+});
+
+module.exports = {
+  ROLES, NOMBRES_ROL, ESTADOS_VEHICULO, MODALIDADES_VENTA, ESTADOS_SOLICITUD, ORIGENES_PROPUESTA, ESTADOS_PROPUESTA,
+};
