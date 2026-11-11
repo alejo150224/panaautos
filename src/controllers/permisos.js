@@ -23,6 +23,10 @@ const PERMISOS = Object.freeze({
   // HU01 (Issue #1): "El empleado/vendedor autorizado puede consultar un listado". RF-09 habla de
   // "empleados": se autoriza a todo el personal interno; el cliente/anónimo queda excluido.
   'inventario:consultar': PERSONAL_INTERNO,
+
+  // HU05 (Issue #5): "Como empleado/vendedor". El Issue exige "vendedor" como dato de la venta,
+  // por lo que solo el rol Vendedor registra ventas (el vendedor es el usuario con sesión).
+  'ventas:registrar': [ROLES.VENDEDOR],
 });
 
 /**
