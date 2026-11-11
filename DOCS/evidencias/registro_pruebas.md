@@ -1,6 +1,6 @@
 # Registro de pruebas ejecutadas
 
-> Todas las ejecuciones son **locales** (macOS, Node v22.14.0), con almacenamiento aislado (memoria o carpetas temporales). **No hay ejecución de CI en GitHub todavía**: el workflow existe en `.github/workflows/ci.yml` pero las ramas no se han publicado. "Número de pruebas" no es cobertura: no se midió cobertura de código.
+> Todas las ejecuciones son **locales** (macOS, Node v22.14.0), con almacenamiento aislado (memoria o carpetas temporales). **No hay resultados de CI de GitHub verificados**: el workflow existe en `.github/workflows/ci.yml` y los PR #11–#22 están abiertos, pero al corte GitHub no registraba ejecuciones (Actions habilitado). Por verificar. "Número de pruebas" no es cobertura: no se midió cobertura de código.
 
 **Comando:** `npm test` (equivale a `node --test "tests/**/*.test.js"`) · **Fecha:** 2026-11-10
 

@@ -39,8 +39,8 @@ Clasificación: **[Guía]** requisito expreso de la guía · **[Issue]** regla d
 
 - **[Pendiente]** Aprobar la adaptación a tres sprints (`DOCS/07`).
 - **[Pendiente]** Autorizar el scope `project` de `gh`, crear/verificar el tablero "PANA AUTOS - Gestión Ágil" (plantilla *Iterative development*), importar los Issues, asignar Iteration y Story Points, verificar la automatización a Done y configurar el Burn-up.
-- **[Pendiente]** Publicar ramas, abrir PR en borrador y revisarlos por pares (humanos); integrar con aprobación expresa.
-- **[Pendiente]** Verificar el resultado del CI en GitHub.
+- **[Pendiente]** Revisión por pares (humanos) de los PR en borrador #11–#22 e integración con aprobación expresa (ramas ya publicadas).
+- **[Pendiente]** Verificar el resultado del CI en GitHub: al corte no había ejecuciones registradas en los PR.
 - **[Pendiente]** Capturas auténticas (tablero, PR, interfaz, Burn-up).
 - **[Pendiente]** Acordar roles reales (PO, Scrum Master, Developers) y la fecha de inicio del Sprint 1.
 - **[Pendiente]** Etiquetas MoSCoW: existen; el Issue #1 tiene un título con formato distinto ("HU01-Consultar…").
