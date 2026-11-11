@@ -1,0 +1,19 @@
+{
+  "name": "panaautos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PANA AUTOS - prototipo académico de Ingeniería de Software I (Universidad Mariana). Sin dependencias externas.",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "start:memoria": "node src/index.js --memoria",
+    "start:vacio": "node src/index.js --memoria --vacio",
+    "demo:reiniciar": "node scripts/reiniciar-datos.js",
+    "test": "node --test \"tests/**/*.test.js\"",
+    "test:cobertura": "node --test --experimental-test-coverage \"tests/**/*.test.js\""
+  },
+  "license": "UNLICENSED"
+}
