@@ -1,0 +1,17 @@
+# Dependencias y artefactos locales
+node_modules/
+*.log
+.DS_Store
+
+# Datos de ejecución del prototipo (JSON local con datos ficticios; se regenera)
+data/
+
+# Secretos y configuración local: nunca se versionan
+.env
+.env.*
+*.pem
+*.key
+
+# Archivos temporales
+*.tmp
+tmp/
