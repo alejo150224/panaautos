@@ -41,7 +41,7 @@ Clasificación: **[Guía]** requisito expreso de la guía · **[Issue]** regla d
 - **[Pendiente]** Aprobar la adaptación a tres sprints (`DOCS/07`).
 - **[Pendiente]** Verificar la automatización a Done tras la primera integración y configurar el Burn-up (Insights solo en la interfaz web). El tablero ya quedó con 3 sprints, Story Points e iteraciones (2026-11-11).
 - **[Pendiente]** Revisión por pares (humanos) de los PR en borrador #11–#22 e integración con aprobación expresa (ramas ya publicadas).
-- **[Pendiente]** Verificar el resultado del CI en GitHub: al corte no había ejecuciones registradas en los PR.
+- **[Comprobado]** CI: 3 ejecuciones en verde sobre `main` (2026-11-11). **[Pendiente]** verlo también sobre un PR abierto.
 - **[Pendiente]** Capturas auténticas (tablero, PR, interfaz, Burn-up).
 - **[Pendiente]** Acordar roles reales (PO, Scrum Master, Developers) y la fecha de inicio del Sprint 1.
 - **[Pendiente]** Etiquetas MoSCoW: existen; el Issue #1 tiene un título con formato distinto ("HU01-Consultar…").
