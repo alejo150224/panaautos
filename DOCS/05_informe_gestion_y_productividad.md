@@ -6,7 +6,7 @@
 
 ## 1. Resumen de la Iteración
 
-* **Sprint Activo:** Sprint 1 — *sin aprobar ni fechar*. Período real: **no definido**.
+* **Sprint Activo:** Sprint 1. El tablero define la iteración «Sprints 1» del **2026-11-04 al 2026-11-17** (configuración previa del tablero, sin Sprint Planning documentado ni aprobación del plan de tres sprints). Período real de trabajo: **no acordado**.
 * **Velocidad Planeada:** línea base documentada para el Sprint 1 = **10 SP** (HU01 + HU05, `DOCS/04`). Es una propuesta pendiente de validación del equipo; el plan de tres sprints (`DOCS/07`) no está aprobado.
 * **Velocidad Lograda (Real):** **0 SP.** Ninguna historia cumple la definición de terminado (criterios + persistencia + revisión + pruebas + evidencia + integración): las diez están implementadas en ramas con PR en borrador (#11–#22) pero **sin revisión humana y sin integrar**.
 * **Porcentaje de Cumplimiento:** **no determinable como métrica oficial.** Solo como referencia: 0 SP logrados frente a los 10 SP de la línea base documentada (0 %), sin período de sprint aprobado. No se copian las cifras del ejemplo de la guía (12 SP, 2 SP, 16,6 %).
@@ -15,11 +15,11 @@
 
 ## 2. Métricas y Seguimiento del Avance
 
-* **Gráfico Burn-up:** **no disponible.** No se pudo acceder a GitHub Projects (el token de `gh` carece del scope `project`) y no existe un tablero verificado con historial. No se reconstruye un historial diario a partir del estado actual ni se presenta un gráfico local como si fuera de GitHub Insights. *Pendiente:* configurar Insights → Burn up por suma de Story Points agrupado por Iteration y pegar la captura auténtica.
+* **Gráfico Burn-up:** **no disponible.** Se leyó el tablero (`DOCS/evidencias/tablero_2026-11-10.md`) pero está sin Story Points ni iteraciones asignados, así que no hay historial que graficar, y la API no expone Insights. No se reconstruye un historial diario a partir del estado actual ni se presenta un gráfico local como si fuera de GitHub Insights. *Pendiente:* configurar Insights → Burn up por suma de Story Points agrupado por Iteration y pegar la captura auténtica.
 * **Evidencia disponible:** registro de 346 pruebas locales en verde en la rama `feature/issue-10-consultar-historial` y en cada rama intermedia (`DOCS/evidencias/registro_pruebas.md`); recorrido manual de la interfaz en navegador (2026-11-10). Las pruebas son locales, **no** CI: al corte GitHub no ha registrado ejecuciones del workflow en los PR #11–#22 (Actions está habilitado); su resultado está **por verificar**.
 * **Análisis de Desviaciones:**
   * *Plan vs. guía:* la guía pide 3 iteraciones; el plan vigente tiene 4 (`DOCS/07`).
-  * *Acceso al tablero:* sin permiso `project` no se pudo revisar, crear ni modificar el tablero; requiere autorización del usuario.
+  * *Tablero:* existe (#4) con los 10 Issues en Backlog, pero con **4** iteraciones en lugar de 3, sin Story Points y sin iteración asignada; no se modificó (requiere aprobación).
   * *Habilitantes no presupuestados:* acceso por roles, datos base de vehículos y clientes, catálogo público mínimo, almacenamiento y servidor local. `DOCS/03` §2.3 los trataba como **supuestos**; aquí se construyeron como trabajo técnico habilitante, **sin Story Points propios** (impacto en esfuerzo real sin estimar).
   * *Defecto detectado:* menú vacío por un error de `app.js`, hallado en pruebas manuales y corregido (`DOCS/evidencias/registro_pruebas.md`).
   * *Revisión de código:* ninguna aún (PR en borrador sin revisión humana).
@@ -56,6 +56,6 @@ Totales: 33 SP con código en ramas · **0 SP Done**. MVP (HU01, HU05–HU08): 1
 
 ## 5. Reajustes para el Sprint 2
 
-* **Factores técnicos que afectaron el desempeño:** falta de acceso a GitHub Projects por permisos del token; ausencia de velocidad medida; trabajo habilitante no estimado; sin revisión de pares y sin resultados de CI verificados.
+* **Factores técnicos que afectaron el desempeño:** tablero sin Story Points ni iteraciones asignadas y con 4 iteraciones en vez de 3; ausencia de velocidad medida; trabajo habilitante no estimado; sin revisión de pares y sin resultados de CI verificados.
 * **Reajuste de la velocidad estimada:** **no se reajusta con datos**, porque no hay velocidad lograda medida (0 SP Done). Decisión pendiente del equipo entre las alternativas A (12 SP de capacidad, todas las historias) y B (10 SP, HU09/HU10 fuera) de `DOCS/07`.
-* **Acciones propuestas:** (1) aprobar la adaptación a tres sprints; (2) autorizar `gh auth refresh -s project` y configurar el tablero "PANA AUTOS - Gestión Ágil" con plantilla *Iterative development*; (3) abrir y revisar los PR (revisión humana real) e integrar con aprobación; (4) verificar que el cierre del Issue mueva la tarjeta a Done; (5) tomar capturas auténticas del tablero y del Burn-up; (6) estimar aparte los habilitantes si se quieren presupuestar.
+* **Acciones propuestas:** (1) aprobar la adaptación a tres sprints; (2) configurar el tablero existente «Pana Autos - Gestión Ágil» (Story Points, iteraciones y vista *Current iteration*), con respaldo previo, tras aprobar el plan; (3) abrir y revisar los PR (revisión humana real) e integrar con aprobación; (4) verificar que el cierre del Issue mueva la tarjeta a Done; (5) tomar capturas auténticas del tablero y del Burn-up; (6) estimar aparte los habilitantes si se quieren presupuestar.

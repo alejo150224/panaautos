@@ -38,7 +38,7 @@ Clasificación: **[Guía]** requisito expreso de la guía · **[Issue]** regla d
 ## 3. Pendientes
 
 - **[Pendiente]** Aprobar la adaptación a tres sprints (`DOCS/07`).
-- **[Pendiente]** Autorizar el scope `project` de `gh`, crear/verificar el tablero "PANA AUTOS - Gestión Ágil" (plantilla *Iterative development*), importar los Issues, asignar Iteration y Story Points, verificar la automatización a Done y configurar el Burn-up.
+- **[Pendiente]** Configurar el tablero existente #4: asignar Story Points e Iteration, ajustar a 3 sprints (con respaldo previo), verificar la automatización a Done y configurar el Burn-up (Insights solo se configura en la interfaz web).
 - **[Pendiente]** Revisión por pares (humanos) de los PR en borrador #11–#22 e integración con aprobación expresa (ramas ya publicadas).
 - **[Pendiente]** Verificar el resultado del CI en GitHub: al corte no había ejecuciones registradas en los PR.
 - **[Pendiente]** Capturas auténticas (tablero, PR, interfaz, Burn-up).
