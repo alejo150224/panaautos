@@ -43,6 +43,10 @@ const PERMISOS = Object.freeze({
 
   // HU03 y HU04 (Issues #3 y #4): "La aprobación solo puede ser realizada por el rol Dueño".
   'propuestas:decidir': [ROLES.DUENO],
+
+  // HU10 (Issue #10): "El dueño y el administrador pueden consultar el historial de acciones;
+  // el sistema deniega esta consulta a los demás roles."
+  'historial:consultar': [ROLES.DUENO, ROLES.ADMINISTRADOR],
 });
 
 /**
