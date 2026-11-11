@@ -23,6 +23,7 @@ Clasificación: **[Guía]** requisito expreso de la guía · **[Issue]** regla d
 | D-15 | No hay venta con pagos, créditos ni reservas; el intercambio no crea inventario | [Issue] | Límite de alcance del Issue #5 |
 | D-16 | No se implementaron ofertas públicas de particulares, Cloudinary ni mejoras del otro proyecto | [Issue] | Fuera de HU01–HU10 |
 | D-17 | Cada historia en su rama; las ramas están **apiladas** (cada una parte de la anterior) y cada PR se prueba por separado | [Guía][Técnica] | La guía pide una rama por Issue; las dependencias hacen que HU03 requiera HU02, etc. |
+| D-18 | Alternativa A de `DOCS/07` aplicada al tablero (3 sprints, 33 SP) | [Técnica] | Instrucción del usuario del 2026-11-11 de desarrollar «completo» lo que pide la guía; capacidad hipotética de 12 SP, **pendiente de validar por el equipo** |
 
 ## 2. Límites conocidos
 
@@ -38,7 +39,7 @@ Clasificación: **[Guía]** requisito expreso de la guía · **[Issue]** regla d
 ## 3. Pendientes
 
 - **[Pendiente]** Aprobar la adaptación a tres sprints (`DOCS/07`).
-- **[Pendiente]** Configurar el tablero existente #4: asignar Story Points e Iteration, ajustar a 3 sprints (con respaldo previo), verificar la automatización a Done y configurar el Burn-up (Insights solo se configura en la interfaz web).
+- **[Pendiente]** Verificar la automatización a Done tras la primera integración y configurar el Burn-up (Insights solo en la interfaz web). El tablero ya quedó con 3 sprints, Story Points e iteraciones (2026-11-11).
 - **[Pendiente]** Revisión por pares (humanos) de los PR en borrador #11–#22 e integración con aprobación expresa (ramas ya publicadas).
 - **[Pendiente]** Verificar el resultado del CI en GitHub: al corte no había ejecuciones registradas en los PR.
 - **[Pendiente]** Capturas auténticas (tablero, PR, interfaz, Burn-up).
