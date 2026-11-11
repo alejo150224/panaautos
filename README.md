@@ -131,11 +131,13 @@ El cálculo del plazo utiliza redondeo hacia arriba: **18/10 → 2 sprints para 
 | [02_priorizacion.md](DOCS/02_priorizacion.md) | Priorización MoSCoW, valor de negocio, complejidad cualitativa y alcance del MVP. |
 | [03_estimacion_y_costos.md](DOCS/03_estimacion_y_costos.md) | Organización del equipo, historia pivote, simulación de estimación, esfuerzo y presupuesto. |
 | [04_plan_de_proyecto_y_modelos.md](DOCS/04_plan_de_proyecto_y_modelos.md) | Justificación de Scrum, velocidad asumida, distribución de sprints y resumen comercial. |
-| [05_informe_gestion_y_productividad.md](DOCS/05_informe_gestion_y_productividad.md) | **Provisional.** Informe de gestión y productividad con los cinco apartados de la guía. |
+| [05_informe_gestion_y_productividad.md](DOCS/05_informe_gestion_y_productividad.md) | **Versión de entrega (corte 2026-11-12).** Informe de gestión y productividad con los cinco apartados de la guía. |
 | [06_matriz_cumplimiento_guia.md](DOCS/06_matriz_cumplimiento_guia.md) | Matriz de cumplimiento de la guía y trazabilidad HU → criterio → código → prueba → rama. |
 | [07_adaptacion_tres_sprints.md](DOCS/07_adaptacion_tres_sprints.md) | **Propuesta pendiente de aprobación** para adaptar el plan de 4 sprints a los 3 de la guía. |
 | [08](DOCS/08_arquitectura_y_mapa_de_archivos.md) · [09](DOCS/09_ruta_de_demostracion_y_datos.md) · [10](DOCS/10_defensa_metodos_y_preguntas.md) · [11](DOCS/11_registro_decisiones_limites_y_pendientes.md) · [12](DOCS/12_registro_continuidad.md) | Material de apoyo: arquitectura, ruta de demostración y datos ficticios, métodos y preguntas de defensa, decisiones/límites/pendientes y registro de continuidad. |
 | [evidencias/registro_pruebas.md](DOCS/evidencias/registro_pruebas.md) | Pruebas ejecutadas, fechas, commits y resultados reales. |
+| [13_guion_de_sustentacion.md](DOCS/13_guion_de_sustentacion.md) | Guion, lista de verificación y preguntas difíciles para la sustentación. |
+| [evidencias/capturas/](DOCS/evidencias/capturas/README.md) | Capturas auténticas de evidencia (tablero, PR, Issues, CI, aplicación). |
 
 Las historias se consultan en [GitHub Issues](https://github.com/alejo150224/panaautos/issues). La pestaña [Projects](https://github.com/alejo150224/panaautos/projects) es el acceso para revisar los tableros del repositorio; este enlace no certifica que las historias ya estén vinculadas a un tablero.
 
@@ -175,7 +177,7 @@ Este README resume el alcance documentado de **HU01–HU10**. No incorpora las t
 
 ## 10. Estado de la implementación y cómo ejecutarla
 
-> **Estado real (corte 2026-11-11):** las diez historias HU01–HU10 están **integradas en `main`** (PR #12–#21), con sus Issues cerrados y las tarjetas en Done. De los 33 SP, **10 SP son del Sprint 1** (HU01 y HU05) y 23 SP se integraron por adelantado desde los Sprints 2 y 3. Las integraciones fueron con **autorrevisión asistida, sin revisión de pares humana**. El CI de GitHub corre `npm test` en verde. Ver [`DOCS/05`](DOCS/05_informe_gestion_y_productividad.md) (provisional hasta el 2026-11-17) y [`DOCS/06`](DOCS/06_matriz_cumplimiento_guia.md).
+> **Estado real (corte 2026-11-12):** las diez historias HU01–HU10 están **integradas en `main`** (PR #12–#21), con sus Issues cerrados y las tarjetas en Done. De los 33 SP, **10 SP son del Sprint 1** (HU01 y HU05) y 23 SP se integraron por adelantado desde los Sprints 2 y 3. Las integraciones fueron con **autorrevisión asistida, sin revisión de pares humana**. El CI de GitHub corre `npm test` en verde. Ver [`DOCS/05`](DOCS/05_informe_gestion_y_productividad.md) (versión de entrega, corte 2026-11-12) y [`DOCS/06`](DOCS/06_matriz_cumplimiento_guia.md).
 
 Prototipo en **Node.js 22+** (JavaScript, CommonJS, JSDoc), sin dependencias que instalar, con arquitectura en tres capas (`src/views`, `src/controllers`, `src/dao`) y entidades en `src/models`. Usa **solo datos ficticios** y escucha únicamente en `127.0.0.1`.
 
