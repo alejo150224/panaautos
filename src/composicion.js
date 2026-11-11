@@ -4,6 +4,7 @@ const UsuarioDAO = require('./dao/UsuarioDAO');
 const ClienteDAO = require('./dao/ClienteDAO');
 const VehiculoDAO = require('./dao/VehiculoDAO');
 const SesionController = require('./controllers/SesionController');
+const InventarioController = require('./controllers/InventarioController');
 
 /**
  * Raíz de composición: único lugar que conoce todas las capas y las conecta (inyección de
@@ -23,6 +24,7 @@ function crearSistema({ almacenamiento, reloj = () => new Date() }) {
 
   const controladores = {
     sesion: new SesionController({ usuarioDAO: dao.usuarios }),
+    inventario: new InventarioController({ vehiculoDAO: dao.vehiculos }),
   };
 
   return { almacenamiento, reloj, dao, controladores };
